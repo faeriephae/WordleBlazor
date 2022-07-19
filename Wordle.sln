@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32616.157
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wordle", "Wordle\Wordle.csproj", "{FDE72AE1-A81E-4DD9-8889-A4E44B25C5A6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ViewModel", "ViewModel", "{135258B3-80B3-476B-B7B5-92B0C46E0A8F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Model", "Model", "{B0E82293-5359-433A-B086-F9B28794DEA8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccess", "DataAccess", "{6BB1F687-3E4D-4C63-8C52-D0969E6076DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wordle.DAL", "DataAccess\ClassLibrary1\Wordle.DAL.csproj", "{38E4972D-0F65-4884-8EFE-93BF71DF0331}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repositories", "Repositories", "{94DBD991-B44B-4E9E-936F-0954D5286C4F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wordle.Models", "Model\Wordle.Models\Wordle.Models.csproj", "{0AF4204E-C1C7-4562-85F4-83FBB7DCB813}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FDE72AE1-A81E-4DD9-8889-A4E44B25C5A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDE72AE1-A81E-4DD9-8889-A4E44B25C5A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDE72AE1-A81E-4DD9-8889-A4E44B25C5A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDE72AE1-A81E-4DD9-8889-A4E44B25C5A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38E4972D-0F65-4884-8EFE-93BF71DF0331}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38E4972D-0F65-4884-8EFE-93BF71DF0331}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38E4972D-0F65-4884-8EFE-93BF71DF0331}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38E4972D-0F65-4884-8EFE-93BF71DF0331}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AF4204E-C1C7-4562-85F4-83FBB7DCB813}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AF4204E-C1C7-4562-85F4-83FBB7DCB813}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AF4204E-C1C7-4562-85F4-83FBB7DCB813}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AF4204E-C1C7-4562-85F4-83FBB7DCB813}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FDE72AE1-A81E-4DD9-8889-A4E44B25C5A6} = {135258B3-80B3-476B-B7B5-92B0C46E0A8F}
+		{38E4972D-0F65-4884-8EFE-93BF71DF0331} = {6BB1F687-3E4D-4C63-8C52-D0969E6076DB}
+		{94DBD991-B44B-4E9E-936F-0954D5286C4F} = {6BB1F687-3E4D-4C63-8C52-D0969E6076DB}
+		{0AF4204E-C1C7-4562-85F4-83FBB7DCB813} = {B0E82293-5359-433A-B086-F9B28794DEA8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {371A6FD6-2B5C-4F92-B640-522E5D3B9586}
+	EndGlobalSection
+EndGlobal
