@@ -12,21 +12,17 @@ namespace Wordle.Models
 {
     public class Player : IPlayer
     {
-        public Player()
-        {
-        }
 
-        [Key]
-        public int Id  => throw new NotImplementedException();
+        [Key, Required]
+        public int Id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         [Required, StringLength(100)]
-        public string Name => throw new NotImplementedException();
+        public string Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         [Required, StringLength(200)]
-        public string Email => throw new NotImplementedException();
+        public string Email { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         [StringLength(2), Column( TypeName="varchar")]
-        public char Language => throw new NotImplementedException();
-
+        public char Language { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     }
 }
