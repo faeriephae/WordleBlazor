@@ -7,10 +7,10 @@ using Wordle.Models;
 
 namespace Wordle.DAL.Repositories
 {
-    public interface IStatRepo : IPlayerRepo
+    public interface IStatRepo
     {
-        int IStatId { get; set; }
-        Task<Stat> GetStatsAsync( int id );
+        //
+        Task<List<Stat>> GetStatsAsync( int id );
         Task<Stat> CalculateGameStatsAsync( int id );
         Task<Stat> UpdateStatsAsync( int id );
     }

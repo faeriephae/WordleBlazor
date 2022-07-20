@@ -7,8 +7,35 @@ using Wordle.Models;
 
 namespace Wordle.DAL.Repositories
 {
-    public interface IPlayerRepo
+    public interface IGamePlayerRepo
     {
+        /// <summary>
+        /// Gets Game.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Game</returns>
+        Task<Game> GetGamebyIdAsync( int id );
+
+        /// <summary>
+        /// Gets Game.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Game</returns>
+        Game GetGameById( int id );
+
+        /// <summary>
+        /// Gets all games belonging to one player.
+        /// </summary>
+        /// <returns>List</returns>
+        Task<List<Game>> GetAllGamesByPlayerIdAsync();
+
+        /// <summary>
+        /// Gets player belonging to game id.
+        /// </summary>
+        /// <returns>Player</returns>
+        Task<Player> GetPlayerByGameIdAsync();
+
+
         /// <summary>
         /// Adds Player.
         /// </summary>

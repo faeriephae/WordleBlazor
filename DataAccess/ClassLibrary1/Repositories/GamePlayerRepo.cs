@@ -8,10 +8,10 @@ using Wordle.Models;
 
 namespace Wordle.DAL.Repositories
 {
-    public class PlayerRepo : IPlayerRepo
+    public class GamePlayerRepo : IGamePlayerRepo
     {
         private DataContext _dataContext;
-        public PlayerRepo( DataContext dataContext )
+        public GamePlayerRepo( DataContext dataContext )
         {
             _dataContext = dataContext;
         }
@@ -39,6 +39,26 @@ namespace Wordle.DAL.Repositories
         public Player GetPlayerById( int id )
         {
             return _dataContext.Players.Find(id);
+        }
+
+        public Task<Game> GetGamebyIdAsync( int id )
+        {
+            throw new NotImplementedException();
+        }
+
+        public Game GetGameById( int id )
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<Game>> GetAllGamesByPlayerIdAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Player> GetPlayerByGameIdAsync()
+        {
+            throw new NotImplementedException();
         }
     }
 }
