@@ -24,5 +24,9 @@ namespace Wordle.Models
 
         [StringLength(2), Column( TypeName="varchar")]
         public char? Language { get; set; }
+
+
+        //1 player n games
+        public virtual ICollection<Game> Games { get; set; } = new List<Game>();
     }
 }

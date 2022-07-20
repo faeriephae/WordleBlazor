@@ -2,7 +2,9 @@
 {
     public interface IStat
     {
-        int Id { get; }
+        int PlayerId { get; set; }
+        public Player Player { get; set; }
+
         int GamesPlayed { get; set; }
         int GamesWon { get; set; }
         int MaxStreak { get; set; }
@@ -11,10 +13,6 @@
 
         //FK
         public int GameId { get; set; }
-        public Game Games { get; set; }
-
-        //FK
-        public int PlayerId { get; set; }
-        public Player player { get; set; }
+        public Game Game { get; set; }
     }
 }

@@ -11,17 +11,13 @@ namespace Wordle.Models
     public class Stat : IStat
     {
         [Key]
-        public int Id => throw new NotImplementedException();
+        public int PlayerId { get; set; }
+        public Player Player { get; set; }
 
-        //FK
+        //1 Stat belongs to 1 game
         [Key, Required]
         public int GameId { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public Game Games { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
-        //FK
-        [Key, Required]
-        public int PlayerId { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public Player player { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public Game Game { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         [Required]
         public int GamesPlayed { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
@@ -38,5 +34,7 @@ namespace Wordle.Models
         [Required]
         public int WinPercentage { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
+        //One Stat has many Games
+        public virtual ICollection<Game> Games { get; set; } = new List<Game>();
     }
 }
