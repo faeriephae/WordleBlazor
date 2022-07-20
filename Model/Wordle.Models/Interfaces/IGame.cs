@@ -10,6 +10,8 @@ namespace Wordle.Models.Interfaces
     {
         public int Id { get; set; }
         public DateTime CurrentDate { get; set; }
+
+        //FK
         public int CurrentWordId { get; set; }
         public Word Word { get; set; }
     }

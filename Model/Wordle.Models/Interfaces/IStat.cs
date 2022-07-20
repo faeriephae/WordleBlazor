@@ -9,6 +9,7 @@
         int Streak { get; set; }
         int WinPercentage { get; set; }
 
+        //FK
         public int GameId { get; set; }
         public Game Games { get; set; }
 

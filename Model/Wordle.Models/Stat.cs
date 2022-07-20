@@ -13,10 +13,12 @@ namespace Wordle.Models
         [Key]
         public int Id => throw new NotImplementedException();
 
+        //FK
         [Key, Required]
         public int GameId { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public Game Games { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
+        //FK
         [Key, Required]
         public int PlayerId { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public Player player { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }

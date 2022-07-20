@@ -11,6 +11,5 @@ namespace Wordle.Models.Interfaces
         public int Id { get; set; }
         public string Term { get; set; }
         public int Difficulty { get; set; }
-        public bool IsUsed { get; set; }
     }
 }
