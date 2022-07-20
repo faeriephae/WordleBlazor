@@ -13,7 +13,8 @@ namespace Wordle.Models
         [Key]
         public int Id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
-        [Required, StringLength(7)] //In case difficulty is implemented by making words longer
+        //Seven, in case difficulty is implemented by making words longer
+        [Required, StringLength(7)] 
         public string Term { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         

@@ -14,15 +14,15 @@ namespace Wordle.Models
     {
 
         [Key, Required]
-        public int Id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int Id { get; set; }
 
-        [Required, StringLength(100)]
-        public string Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        [StringLength(100)]
+        public string? Name { get; set; }
 
-        [Required, StringLength(200)]
-        public string Email { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        [StringLength(200)]
+        public string? Email { get; set; }
 
         [StringLength(2), Column( TypeName="varchar")]
-        public char Language { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public char? Language { get; set; }
     }
 }
