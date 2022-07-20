@@ -1,4 +1,4 @@
-﻿using Wordle.Models;
+﻿using Wordle.Models ;
 using Microsoft.EntityFrameworkCore;
 
 namespace Wordle.DAL
@@ -17,9 +17,9 @@ namespace Wordle.DAL
         }
 
         //Tables to be built
-        public virtual DbSet<Stat> Stats { get; set; }
-        public virtual DbSet<Game> Games { get; set; }
-        public virtual DbSet<Player> Players { get; set; }
+        public virtual DbSet<Stat>? Stats { get; set; }
+        public virtual DbSet<Game>? Games { get; set; }
+        public virtual DbSet<Player>? Players { get; set; }
 
     }
 }
