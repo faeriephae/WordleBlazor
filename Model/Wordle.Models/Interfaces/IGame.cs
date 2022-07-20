@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Wordle.Models.Interfaces
 {
-    public interface IWord
+    public interface IGame
     {
         public int Id { get; set; }
-        public string Term { get; set; }
-        public int Difficulty { get; set; }
-        public bool IsUsed { get; set; }
+        public DateTime CurrentDate { get; set; }
+        public int CurrentWordId { get; set; }
+        public Word Word { get; set; }
     }
 }
