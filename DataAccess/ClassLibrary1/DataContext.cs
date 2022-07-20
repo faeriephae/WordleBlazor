@@ -8,6 +8,8 @@ namespace Wordle.DAL
         protected override void OnConfiguring( DbContextOptionsBuilder optionsBuilder )
         {
             optionsBuilder.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\r019cvr\source\repos\SchoolProjects\WordleBlazor\DataAccess\ClassLibrary1\Database\WordleDB.mdf;Integrated Security=True");
+            optionsBuilder.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\r019cvr\source\repos\SchoolProjects\WordleBlazor\DataAccess\ClassLibrary1\Database\WordleDB.mdf;Integrated Security=True",b => b.MigrationsAssembly("Wordle.DAL" ));
+
         }
 
         protected override void OnModelCreating( ModelBuilder modelBuilder )
