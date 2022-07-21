@@ -7,7 +7,7 @@ namespace Wordle.Models
     public class Game : IGame
     {
         [Key]
-        public int Id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int Id { get; set; }
 
         [Required, Column(TypeName = "DATETIME2")]
         public DateTime CurrentDate { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
@@ -16,10 +16,13 @@ namespace Wordle.Models
         //FK -> 1 Game has one *correct* word
         public int CurrentWordId { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public Word Word { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        
+
+
+        public int CurrentPlayerId { get; set; }
+        public Player? Player { get; set; }
+
         //One game has many *tried* words
         public virtual ICollection<Word> Words { get; set; } = new List<Word>();
-
 
     }
 }

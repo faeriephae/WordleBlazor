@@ -10,7 +10,7 @@ namespace Wordle.DAL.Repositories
     public interface IGamePlayerRepo
     {
         /// <summary>
-        /// Gets Game.
+        /// Gets Game by id.
         /// </summary>
         /// <param name="id"></param>
         /// <returns>Game</returns>
@@ -27,13 +27,13 @@ namespace Wordle.DAL.Repositories
         /// Gets all games belonging to one player.
         /// </summary>
         /// <returns>List</returns>
-        Task<List<Game>> GetAllGamesByPlayerIdAsync();
+        Task<List<Game>> GetAllGamesByPlayerIdAsync( int id );
 
         /// <summary>
         /// Gets player belonging to game id.
         /// </summary>
         /// <returns>Player</returns>
-        Task<Player> GetPlayerByGameIdAsync();
+        Task<Player> GetPlayerByGameIdAsync( int id);
 
 
         /// <summary>

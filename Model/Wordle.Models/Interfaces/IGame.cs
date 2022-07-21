@@ -16,5 +16,9 @@ namespace Wordle.Models.Interfaces
         public int CurrentWordId { get; set; }
         public Word Word { get; set; }
 
+        //FK
+        public int CurrentPlayerId { get; set; }
+        public Player Player { get; set; }
+
     }
 }

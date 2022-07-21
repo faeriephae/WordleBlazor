@@ -13,7 +13,7 @@ namespace Wordle.DAL.Repositories
         private DataContext _dataContext;
         public GamePlayerRepo( DataContext dataContext )
         {
-            _dataContext = dataContext;
+            this._dataContext = dataContext;
         }
 
         public async Task AddPlayerAsync( Player player )
@@ -41,22 +41,22 @@ namespace Wordle.DAL.Repositories
             return _dataContext.Players.Find(id);
         }
 
-        public Task<Game> GetGamebyIdAsync( int id )
+        public async Task<Game> GetGamebyIdAsync( int id )
         {
-            throw new NotImplementedException();
+            return await _dataContext.Games.FindAsync(id);
         }
 
         public Game GetGameById( int id )
         {
-            throw new NotImplementedException();
+            return _dataContext.Games.Find(id);
         }
 
-        public Task<List<Game>> GetAllGamesByPlayerIdAsync()
+        public Task<List<Game>> GetAllGamesByPlayerIdAsync( int id )
         {
             throw new NotImplementedException();
         }
 
-        public Task<Player> GetPlayerByGameIdAsync()
+        public Task<Player> GetPlayerByGameIdAsync( int id )
         {
             throw new NotImplementedException();
         }

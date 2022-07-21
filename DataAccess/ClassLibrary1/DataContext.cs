@@ -1,10 +1,16 @@
 ﻿using Wordle.Models ;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Wordle.DAL
 {
-    public class DataContext : DbContext
+    public class DataContext : IdentityDbContext
     {
+        public DataContext( DbContextOptions<DataContext> options ) : base(options)
+        {
+
+        }
+
         protected override void OnConfiguring( DbContextOptionsBuilder optionsBuilder )
         {
             optionsBuilder.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\r019cvr\source\repos\SchoolProjects\WordleBlazor\DataAccess\ClassLibrary1\Database\WordleDB.mdf;Integrated Security=True");
