@@ -12,8 +12,8 @@ using Wordle.DAL;
 namespace Wordle.DAL.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220720123438_lol")]
-    partial class lol
+    [Migration("20220721114609_Vers1.4")]
+    partial class Vers14
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -34,6 +34,9 @@ namespace Wordle.DAL.Migrations
 
                     b.Property<DateTime>("CurrentDate")
                         .HasColumnType("DATETIME2");
+
+                    b.Property<int>("CurrentPlayerId")
+                        .HasColumnType("int");
 
                     b.Property<int>("CurrentWordId")
                         .HasColumnType("int");
@@ -116,6 +119,9 @@ namespace Wordle.DAL.Migrations
 
                     b.HasIndex("GameId");
 
+                    b.HasIndex("PlayerId")
+                        .IsUnique();
+
                     b.ToTable("Stats");
                 });
 
@@ -147,7 +153,7 @@ namespace Wordle.DAL.Migrations
 
             modelBuilder.Entity("Wordle.Models.Game", b =>
                 {
-                    b.HasOne("Wordle.Models.Player", null)
+                    b.HasOne("Wordle.Models.Player", "Player")
                         .WithMany("Games")
                         .HasForeignKey("PlayerId");
 
@@ -161,6 +167,8 @@ namespace Wordle.DAL.Migrations
                         .WithMany("Games")
                         .HasForeignKey("StatPlayerId", "StatGameId");
 
+                    b.Navigation("Player");
+
                     b.Navigation("Word");
                 });
 
@@ -173,8 +181,8 @@ namespace Wordle.DAL.Migrations
                         .IsRequired();
 
                     b.HasOne("Wordle.Models.Player", "Player")
-                        .WithMany()
-                        .HasForeignKey("PlayerId")
+                        .WithOne("Stats")
+                        .HasForeignKey("Wordle.Models.Stat", "PlayerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -198,6 +206,9 @@ namespace Wordle.DAL.Migrations
             modelBuilder.Entity("Wordle.Models.Player", b =>
                 {
                     b.Navigation("Games");
+
+                    b.Navigation("Stats")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Wordle.Models.Stat", b =>
