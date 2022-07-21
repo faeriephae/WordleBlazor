@@ -51,14 +51,20 @@ namespace Wordle.DAL.Repositories
             return _dataContext.Games.Find(id);
         }
 
-        public Task<List<Game>> GetAllGamesByPlayerIdAsync( int id )
+        public async Task<List<Game>> GetAllGamesByPlayerIdAsync( int id )
         {
-            throw new NotImplementedException();
+            var games =  from g in await _dataContext.Players.Where(p => p.Id == id).ToListAsync()
+                        select g.Games;
+
+            return (List<Game>)games;
         }
 
-        public Task<Player> GetPlayerByGameIdAsync( int id )
+        public async Task<Player> GetPlayerByGameIdAsync( int id )
         {
-            throw new NotImplementedException();
+            var player = from p in await _dataContext.Games.Where(g => g.Id == id).ToListAsync()
+                         select p.Player;
+
+            return (Player)player;
         }
     }
 }
