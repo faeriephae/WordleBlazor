@@ -41,7 +41,7 @@ namespace Wordle.DAL.Repositories
             return _dataContext.Players.Find(id);
         }
 
-        public async Task<Game> GetGamebyIdAsync( int id )
+        public async Task<Game> GetGameByIdAsync( int id )
         {
             return await _dataContext.Games.FindAsync(id);
         }
@@ -65,6 +65,16 @@ namespace Wordle.DAL.Repositories
                          select p.Player;
 
             return (Player)player;
+        }
+
+        public async Task AddGameAsync( Game game )
+        {
+            await _dataContext.Games.AddAsync(game);
+        }
+
+        public void UpdateGame( Game game )
+        {
+             _dataContext.Games.Update( game);
         }
     }
 }

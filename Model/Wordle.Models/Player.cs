@@ -28,5 +28,6 @@ namespace Wordle.Models
 
         //1 player n games
         public virtual ICollection<Game> Games { get; set; } = new List<Game>();
+        public Stat Stats { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     }
 }

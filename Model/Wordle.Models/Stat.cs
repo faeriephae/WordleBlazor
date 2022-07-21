@@ -16,8 +16,8 @@ namespace Wordle.Models
 
         //1 Stat belongs to 1 game
         [Key, Required]
-        public int GameId { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public Game Game { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int GameId { get; set; }
+        public Game Game { get; set; }
 
         [Required]
         public int GamesPlayed { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }

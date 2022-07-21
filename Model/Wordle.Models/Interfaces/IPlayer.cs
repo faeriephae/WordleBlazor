@@ -12,5 +12,7 @@ namespace Wordle.Models.Interfaces
         public string? Name { get; set; }
         public string? Email { get; set; }
         public char? Language { get; set; }
+        
+        public Stat Stats { get; set; }
     }
 }
