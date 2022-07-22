@@ -40,7 +40,6 @@ namespace Wordle.DAL.Repositories
 
         public Task<Stat> CalculateGameStatsAsync( int id )
         {
-            throw new NotImplementedException();
         }
 
         public async Task DeleteStat( int id)
@@ -54,9 +53,9 @@ namespace Wordle.DAL.Repositories
             await _dataContext.AddAsync(stat);
         }
 
-        public Task UpdatePlayerStatsAsync( int id )
+        public async Task UpdatePlayerStatsAsync( int id )
         {
-            throw new NotImplementedException();
+            _dataContext.Stats.UpdateRange(await GetAllStatsAsync(id));
         }
     }
 }
