@@ -8,6 +8,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ViewModel", "ViewModel", "{135258B3-80B3-476B-B7B5-92B0C46E0A8F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Model", "Model", "{B0E82293-5359-433A-B086-F9B28794DEA8}"
+	ProjectSection(SolutionItems) = preProject
+		DataAccess\ClassLibrary1\UnitOfWork.cs = DataAccess\ClassLibrary1\UnitOfWork.cs
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccess", "DataAccess", "{6BB1F687-3E4D-4C63-8C52-D0969E6076DB}"
 EndProject
