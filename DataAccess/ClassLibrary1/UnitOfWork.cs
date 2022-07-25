@@ -27,7 +27,6 @@ namespace Wordle.DAL
         {
             get
             {
-                //If null --> assign
                 return _statRepo ??= new StatRepo(_dataContext);
             }
             set { _statRepo = value; }

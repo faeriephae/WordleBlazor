@@ -38,8 +38,10 @@ namespace Wordle.DAL.Repositories
             return await _dataContext.Stats.Where(p => p.PlayerId == playerId).ToListAsync();
         }
 
+        //TODO
         public Task<Stat> CalculateGameStatsAsync( int id )
         {
+            throw new NotImplementedException();
         }
 
         public async Task DeleteStat( int id)

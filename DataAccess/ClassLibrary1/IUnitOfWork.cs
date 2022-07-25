@@ -15,6 +15,11 @@ namespace Wordle.DAL
         GamePlayerRepo GamePlayerRepo { get; set; }
 
         /// <summary>
+        /// Instance of StatRepo.
+        /// </summary>
+        StatRepo StatRepo { get; set; }
+
+        /// <summary>
         /// Saves changes.
         /// </summary>
         /// <returns></returns>
