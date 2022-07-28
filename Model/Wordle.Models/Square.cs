@@ -6,7 +6,6 @@ namespace Wordle.Models
     {
         //to keep track of the active square number
         private static int squaresAlive;
-
         public Square()
         {
             SetId();

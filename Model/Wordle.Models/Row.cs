@@ -16,7 +16,7 @@ namespace Wordle.Models
             SetId();
         }
 
-        public new int Id { get; set; }
+        public int Id { get; set; }
 
         private List<Square> squares;
 
