@@ -2,7 +2,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    background-color: #141414;
+    background-color: rgba(0, 0, 0, 0.72);
 }
 
 main {
@@ -10,7 +10,7 @@ main {
 }
 
 .sidebar {
-    background-color: rgba(36, 36, 36, 0.78);
+    background-color: rgba(0, 0, 0, 0.78);
 }
 
 .top-row {
