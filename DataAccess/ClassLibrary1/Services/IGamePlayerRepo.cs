@@ -10,11 +10,11 @@ namespace Wordle.DAL.Repositories
     public interface IGamePlayerRepo
     {
         /// <summary>
-        /// Adds Game.
+        /// Gets a (new) game.
         /// </summary>
         /// <param name="game"></param>
         /// <returns></returns>
-        Task AddGameAsync( Game game );
+        Task<Game> GetGameAsync();
 
         /// <summary>
         /// Updates Game.

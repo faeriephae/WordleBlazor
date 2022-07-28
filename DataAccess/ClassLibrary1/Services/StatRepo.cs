@@ -8,10 +8,10 @@ using Wordle.Models;
 
 namespace Wordle.DAL.Repositories
 {
-    public class StatRepo : IStatRepo 
+    public class StatRepo: IStatRepo 
     {
         private DataContext _dataContext;
-        public StatRepo( DataContext dataContext )
+        public StatService( DataContext dataContext )
         {
             this._dataContext = dataContext;
         }

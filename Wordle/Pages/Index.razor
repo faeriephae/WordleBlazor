@@ -1,10 +1,25 @@
 ﻿@page "/"
 @using Components;
 @using Models;
-@inject HttpClient Http
+@inject Wordle.DAL.UnitOfWork UnitOfWork
 
 <PageTitle>Wordle</PageTitle>
 
-<h2>Wordle</h2>
-<hr/>
-<Wordle.Components.Board />
+@if( game == null)
+{
+    <h2>loading...</h2>
+}
+else
+{
+    <hr/>
+    <Wordle.Components.Board />
+}
+
+@code{
+    private Game? game;
+
+    protected override async Task OnInitializedAsync()
+    {
+        game = await UnitOfWork.GamePlayerRepo.GetGameAsync();
+    }
+}

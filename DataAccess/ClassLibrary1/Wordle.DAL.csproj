@@ -23,7 +23,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Model\Wordle.Models\Wordle.Models.csproj" />
-    <ProjectReference Include="..\..\Wordle\Wordle.csproj" />
   </ItemGroup>
 
 </Project>

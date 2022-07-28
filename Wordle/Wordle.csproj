@@ -28,9 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Model\Wordle.Models\Wordle.Models.csproj">
-      <TreatAsUsed>true</TreatAsUsed>
-    </ProjectReference>
+    <ProjectReference Include="..\DataAccess\ClassLibrary1\Wordle.DAL.csproj" />
   </ItemGroup>
 
 </Project>

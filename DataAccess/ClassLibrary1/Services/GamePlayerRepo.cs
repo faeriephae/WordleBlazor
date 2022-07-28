@@ -67,14 +67,15 @@ namespace Wordle.DAL.Repositories
             return (Player)player;
         }
 
-        public async Task AddGameAsync( Game game )
-        {
-            await _dataContext.Games.AddAsync(game);
-        }
-
         public void UpdateGame( Game game )
         {
              _dataContext.Games.Update( game);
+        }
+
+        //TODO
+        public Task<Game> GetGameAsync()
+        {
+            throw new NotImplementedException();
         }
     }
 }

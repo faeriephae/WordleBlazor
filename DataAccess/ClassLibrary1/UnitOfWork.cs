@@ -10,7 +10,7 @@ namespace Wordle.DAL
     public class UnitOfWork : IUnitOfWork
     {
         private GamePlayerRepo? _gamePlayerRepo;
-        private StatRepo? _statRepo;
+        private StatService? _statRepo;
         private DataContext _dataContext;
 
         public GamePlayerRepo GamePlayerRepo
@@ -23,11 +23,11 @@ namespace Wordle.DAL
             set { _gamePlayerRepo = value; }
         }
 
-        public StatRepo StatRepo
+        public StatService StatRepo
         {
             get
             {
-                return _statRepo ??= new StatRepo(_dataContext);
+                return _statRepo ??= new StatService(_dataContext);
             }
             set { _statRepo = value; }
         }
