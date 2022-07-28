@@ -1,0 +1,27 @@
+﻿<!-- Components/Square -->
+
+
+@code {
+    private Models.Square s = new Models.Square();
+    <div class="square comp" id="@s.Id" ></div>
+}
+
+
+<style scoped>
+    .square {
+        background-color: inherit;
+        border: none;
+        border: 1px solid rgba(153, 117, 173, 0.76);
+        width: 3rem;
+        height: 3rem;
+        font-size: 30px;
+        text-align: center;
+        vertical-align: middle;
+        /*line-height: 60px;*/
+        cursor: pointer;
+    }
+    .square:hover {
+        background-color: rgba(56, 56, 56, 0.79);
+        transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+</style>
