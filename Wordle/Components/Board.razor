@@ -1,17 +1,29 @@
 ﻿<!-- Components/Board -->
+@using Components
+@using Models
 
-<div class="board">
-   
+@code{
+    public Models.Board board = new Models.Board();
+}
+
+@board = <div class="board comp" onload="@board">
+   <Row /> 
+   <Row />
+   <Row />
+   <Row />
+   <Row />
+   <Row />
 </div>
 
 <style scoped>
     .board {
+        margin: 0 auto;
         display: grid;
-        grid-template-columns: auto auto auto;
+        grid-auto-rows:auto;
         background-color: rgba(19, 19, 19, 0.79);
         padding: 0;
         /* in px so it doesn't scale */
-        width: 300px;
-        height: 300px;
+        width: 400px;
+        height: 400px;
     }
 </style>

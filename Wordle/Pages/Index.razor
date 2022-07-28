@@ -1,4 +1,10 @@
 ﻿@page "/"
+@using Components;
+@using Models;
 @inject HttpClient Http
 
 <PageTitle>Wordle</PageTitle>
+
+<h2>Wordle</h2>
+<hr/>
+<Wordle.Components.Board />
