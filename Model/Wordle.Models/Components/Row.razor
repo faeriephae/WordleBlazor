@@ -1,13 +1,11 @@
 ﻿<!-- Components/Rows -->
-@using Models.Components.Square;
-
 @code{
     private Models.Row r = new Models.Row();
     private List<Models.Square> sqs = new List<Models.Square>();
 }
 
 <div class="row comp" id="@r.Id">
-    <Square />
+    <Square /> @sqs.Add(this.);
     <Square />
     <Square />
     <Square />
