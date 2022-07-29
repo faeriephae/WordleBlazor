@@ -37,7 +37,7 @@ namespace Wordle.Models
         /// Adds squares to row.
         /// </summary>
         /// <param name="sq"></param>
-        public static void AddSquareToRow( Square sq, Row row )
+        public void AddSquareToRow( Square sq, Row row )
         {
             row.GetSquares().Add(sq);
         }

@@ -1,0 +1,41 @@
+﻿<!-- Components/Rows -->
+@using Components
+@using Wordle.Models
+
+@code{
+    public Models.Row? row = new Models.Row();
+    Models.Square? sq1, sq2, sq3, sq4, sq5;
+    List<Square>? compSquares;
+ }
+
+ <!-- fill row (list) with squares -->
+ @if( compSquares != null)
+{
+    @foreach( var sq in compSquares)
+    {
+        Wordle.Models.Square sq = new Models.Square();
+        sq.AddSquareToRow(sq);
+    }
+}
+
+@if( row != null)
+{
+    
+}
+<!-- reference their c# counterpart ( i hope )-->
+<div class="row comp" id="@row.Id" @ref="@row">
+    <Square @ref="@sq1" id="@sq1.Id" />
+    <Square @ref="@sq2" id="@sq2.Id" />
+    <Square @ref="@sq3" id="@sq3.Id" />
+    <Square @ref="@sq4" id="@sq4.Id" />
+    <Square @ref="@sq5" id="@sq5.Id" />
+</div>
+
+<style scoped>
+    .row {
+        margin: 0 auto;
+        background-color: inherit;
+        width: 100%;
+        height: 100%;
+    }
+</style>
