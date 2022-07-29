@@ -1,0 +1,36 @@
+﻿<!-- Components/Rows -->
+@using Components;
+@using Wordle.Models;
+
+@code{
+    private Models.Row row = new Models.Row();
+    Square? sq1, sq2, sq3, sq4, sq5;
+    List<Square>? compSquares;
+ }
+
+ <!-- Create squares for eac -->
+ @if( compSquares != null)
+{
+    @foreach( var component in compSquares)
+    {
+        Wordle.Models.Square sq = new Models.Square();
+    }
+}
+
+
+<div class="row comp">
+    <Square @ref="sq1" />
+    <Square @ref="sq2" />
+    <Square @ref="sq3"/>
+    <Square @ref="sq4"/>
+    <Square @ref="sq5"/>
+</div>
+
+<style scoped>
+    .row{
+        margin: 0 auto;
+        background-color: inherit;
+        width: 100%;
+        height: 100%;
+    }
+</style>
