@@ -18,6 +18,7 @@ else
 @code{
     private Game? game;
 
+    //Page load/initialise
     protected override async Task OnInitializedAsync()
     {
         game = await UnitOfWork.GamePlayerRepo.GetGameAsync();

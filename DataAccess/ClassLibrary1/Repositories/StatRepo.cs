@@ -11,7 +11,7 @@ namespace Wordle.DAL.Repositories
     public class StatRepo: IStatRepo 
     {
         private DataContext _dataContext;
-        public StatService( DataContext dataContext )
+        public StatRepo( DataContext dataContext )
         {
             this._dataContext = dataContext;
         }
