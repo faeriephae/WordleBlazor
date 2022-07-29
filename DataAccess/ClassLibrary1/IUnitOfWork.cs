@@ -17,7 +17,7 @@ namespace Wordle.DAL
         /// <summary>
         /// Instance of StatRepo.
         /// </summary>
-        StatService StatRepo { get; set; }
+        StatRepo StatRepo { get; set; }
 
         /// <summary>
         /// Saves changes.
