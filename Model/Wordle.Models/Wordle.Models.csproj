@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Components\Board.razor">
+    <Content Include="BlazorComponents\Board.razor">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
     </Content>
     <Content Include="Components\Row.razor">

@@ -1,6 +1,5 @@
 ﻿@page "/"
-@using Models.Components;
-@using Models;
+@using Models
 @inject Wordle.DAL.UnitOfWork UnitOfWork
 
 <PageTitle>Wordle</PageTitle>
@@ -12,7 +11,7 @@
 else
 {
     <hr/>
-    @*<Board />*@
+    <Board />
 }
 
 @code{
