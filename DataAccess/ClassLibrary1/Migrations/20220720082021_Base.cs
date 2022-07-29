@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -7,7 +6,7 @@ namespace Wordle.DAL.Migrations
 {
     public partial class Base : Migration
     {
-        protected override void Up(MigrationBuilder migrationBuilder)
+        protected override void Up( MigrationBuilder migrationBuilder )
         {
             migrationBuilder.AddColumn<DateTime>(
                 name: "CurrentDate",
@@ -58,7 +57,7 @@ namespace Wordle.DAL.Migrations
                 onDelete: ReferentialAction.Cascade);
         }
 
-        protected override void Down(MigrationBuilder migrationBuilder)
+        protected override void Down( MigrationBuilder migrationBuilder )
         {
             migrationBuilder.DropForeignKey(
                 name: "FK_Games_Words_WordId",

@@ -6,7 +6,7 @@ namespace Wordle.DAL.Migrations
 {
     public partial class Vers14 : Migration
     {
-        protected override void Up(MigrationBuilder migrationBuilder)
+        protected override void Up( MigrationBuilder migrationBuilder )
         {
             migrationBuilder.CreateIndex(
                 name: "IX_Stats_PlayerId",
@@ -15,7 +15,7 @@ namespace Wordle.DAL.Migrations
                 unique: true);
         }
 
-        protected override void Down(MigrationBuilder migrationBuilder)
+        protected override void Down( MigrationBuilder migrationBuilder )
         {
             migrationBuilder.DropIndex(
                 name: "IX_Stats_PlayerId",

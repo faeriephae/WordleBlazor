@@ -6,7 +6,7 @@ namespace Wordle.DAL.Migrations
 {
     public partial class Updated : Migration
     {
-        protected override void Up(MigrationBuilder migrationBuilder)
+        protected override void Up( MigrationBuilder migrationBuilder )
         {
             migrationBuilder.AddColumn<int>(
                 name: "CurrentPlayerId",
@@ -16,7 +16,7 @@ namespace Wordle.DAL.Migrations
                 defaultValue: 0);
         }
 
-        protected override void Down(MigrationBuilder migrationBuilder)
+        protected override void Down( MigrationBuilder migrationBuilder )
         {
             migrationBuilder.DropColumn(
                 name: "CurrentPlayerId",

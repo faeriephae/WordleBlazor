@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
-using Wordle.Models.Interfaces;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Wordle.Models.Interfaces;
 
 namespace Wordle.Models
 {
@@ -22,7 +16,7 @@ namespace Wordle.Models
         [StringLength(200)]
         public string? Email { get; set; }
 
-        [StringLength(2), Column( TypeName="varchar")]
+        [StringLength(2), Column(TypeName = "varchar")]
         public char? Language { get; set; }
 
 

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Wordle.Models;
+﻿using Wordle.Models;
 
 namespace Wordle.DAL.Repositories
 {
@@ -48,7 +43,7 @@ namespace Wordle.DAL.Repositories
         /// Gets player belonging to game id.
         /// </summary>
         /// <returns>Player</returns>
-        Task<Player> GetPlayerByGameIdAsync( int id);
+        Task<Player> GetPlayerByGameIdAsync( int id );
 
 
         /// <summary>
@@ -56,13 +51,13 @@ namespace Wordle.DAL.Repositories
         /// </summary>
         /// <param name="player"></param>
         /// <returns></returns>
-        Task AddPlayerAsync ( Player player );
+        Task AddPlayerAsync( Player player );
 
         /// <summary>
         /// Gets all players.
         /// </summary>
         /// <returns>A list of players. </returns>
-        Task<List<Player>> GetAllPlayersAsync ();
+        Task<List<Player>> GetAllPlayersAsync();
 
         /// <summary>
         /// Gets player by id.
@@ -75,7 +70,7 @@ namespace Wordle.DAL.Repositories
         /// Deletes player.
         /// </summary>
         /// <param name="id"></param>
-        void DeletePlayerByIdAsync ( int id );
+        void DeletePlayerByIdAsync( int id );
 
         /// <summary>
         /// Gets a player by id.

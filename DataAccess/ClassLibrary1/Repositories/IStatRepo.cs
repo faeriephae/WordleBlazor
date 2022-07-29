@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Wordle.Models;
+﻿using Wordle.Models;
 
 namespace Wordle.DAL.Repositories
 {
@@ -36,7 +31,7 @@ namespace Wordle.DAL.Repositories
         /// </summary>
         /// <param name="player"></param>
         /// <returns>List</returns>
-        Task<List<Stat>> GetAllStatsAsync( Player player);
+        Task<List<Stat>> GetAllStatsAsync( Player player );
 
         /// <summary>
         /// Gets Stats.

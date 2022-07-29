@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Wordle.Models.Interfaces;
+﻿using Wordle.Models.Interfaces;
 
 namespace Wordle.Models
 {
@@ -31,7 +26,7 @@ namespace Wordle.Models
         }
 
         public int Width { get; set; }
-        public int Height {get; set; }
+        public int Height { get; set; }
 
         public void SetId()
         {

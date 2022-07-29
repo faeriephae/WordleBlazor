@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Wordle.Models;
 
 namespace Wordle.DAL.Repositories
@@ -53,7 +48,7 @@ namespace Wordle.DAL.Repositories
 
         public async Task<List<Game>> GetAllGamesByPlayerIdAsync( int id )
         {
-            var games =  from g in await _dataContext.Players.Where(p => p.Id == id).ToListAsync()
+            var games = from g in await _dataContext.Players.Where(p => p.Id == id).ToListAsync()
                         select g.Games;
 
             return (List<Game>)games;
@@ -69,7 +64,7 @@ namespace Wordle.DAL.Repositories
 
         public void UpdateGame( Game game )
         {
-             _dataContext.Games.Update( game);
+            _dataContext.Games.Update(game);
         }
 
         //TODO

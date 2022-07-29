@@ -1,6 +1,5 @@
-﻿using Wordle.Models ;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Wordle.Models;
 
 namespace Wordle.DAL
 {
@@ -9,14 +8,14 @@ namespace Wordle.DAL
         protected override void OnConfiguring( DbContextOptionsBuilder optionsBuilder )
         {
             optionsBuilder.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\r019cvr\source\repos\SchoolProjects\WordleBlazor\DataAccess\ClassLibrary1\Database\WordleDB.mdf;Integrated Security=True");
-            optionsBuilder.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\r019cvr\source\repos\SchoolProjects\WordleBlazor\DataAccess\ClassLibrary1\Database\WordleDB.mdf;Integrated Security=True",b => b.MigrationsAssembly("Wordle.DAL" ));
+            optionsBuilder.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\r019cvr\source\repos\SchoolProjects\WordleBlazor\DataAccess\ClassLibrary1\Database\WordleDB.mdf;Integrated Security=True", b => b.MigrationsAssembly("Wordle.DAL"));
 
         }
 
         protected override void OnModelCreating( ModelBuilder modelBuilder )
         {
             //Primary key from Stat.cs --> PlayerId + GameId
-            modelBuilder.Entity<Stat>().HasKey( id => new { id.PlayerId, id.GameId });
+            modelBuilder.Entity<Stat>().HasKey(id => new { id.PlayerId, id.GameId });
         }
 
         //Tables to be built

@@ -6,7 +6,7 @@ namespace Wordle.DAL.Migrations
 {
     public partial class please : Migration
     {
-        protected override void Up(MigrationBuilder migrationBuilder)
+        protected override void Up( MigrationBuilder migrationBuilder )
         {
             migrationBuilder.CreateTable(
                 name: "Games",
@@ -70,7 +70,7 @@ namespace Wordle.DAL.Migrations
                 column: "GameId");
         }
 
-        protected override void Down(MigrationBuilder migrationBuilder)
+        protected override void Down( MigrationBuilder migrationBuilder )
         {
             migrationBuilder.DropTable(
                 name: "Stats");
