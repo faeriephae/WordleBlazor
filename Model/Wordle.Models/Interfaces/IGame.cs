@@ -12,7 +12,7 @@
 
         //FK
         public int CurrentPlayerId { get; set; }
-        public Player Player { get; set; }
+        public Player? Player { get; set; }
 
     }
 }

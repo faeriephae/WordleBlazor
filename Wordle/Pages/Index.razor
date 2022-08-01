@@ -1,10 +1,11 @@
 ﻿@page "/"
-@using Models
-@inject Wordle.DAL.UnitOfWork UnitOfWork
+@using Models;
+@inject Wordle.DAL.UnitOfWork UnitOfWork;
 
 <PageTitle>Wordle</PageTitle>
 
-@if( game == null)
+<!-- TODO FOR TESTING UNCOMMENT AFTER DATA HAS BEEN ADDED -->
+if( game == null)
 {
     <h2>loading...</h2>
 }

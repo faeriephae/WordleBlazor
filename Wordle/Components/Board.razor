@@ -1,25 +1,38 @@
 ﻿<!-- Components/Board -->
-@using Components
+@using Components.Board
 @using Models
 
-@code{
+@code {
     public Models.Board board = new Models.Board();
+    public Models.Row r1, r2, r3, r4, r5, r6;
+    public List<Models.Row> rows;
+}
+
+<!-- Fill list with actual rows -->
+@if(Models.Board.Rows != null)
+{
+    rows.AddRange(r1, r2, r3, r4, r5, r6);
+
+    @for(int i = 0 ; i == 6 ; i++)
+    {
+        rows[i] = Models.Board.Rows[0];
+    }
 }
 
 @board = <div class="board comp" @ref=@board>
-   <Row /> 
-   <Row />
-   <Row />
-   <Row />
-   <Row />
-   <Row />
+    <Row @ref="@r1" />
+    <Row @ref="@r2" />
+    <Row @ref="@r3" />
+    <Row @ref="@r4" />
+    <Row @ref="@r5" />
+    <Row @ref="@r6" />
 </div>
 
 <style scoped>
     .board {
         margin: 0 auto;
         display: grid;
-        grid-auto-rows:auto;
+        grid-auto-rows: auto;
         background-color: rgba(19, 19, 19, 0.79);
         padding: 0;
         /* in px so it doesn't scale */
