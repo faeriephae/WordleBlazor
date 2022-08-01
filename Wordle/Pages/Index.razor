@@ -1,21 +1,22 @@
 ﻿@page "/"
-@using Models;
-@inject Wordle.DAL.UnitOfWork UnitOfWork;
+@using Wordle.Components
+@using Models
+@inject Wordle.DAL.UnitOfWork UnitOfWork
 
 <PageTitle>Wordle</PageTitle>
 
 <!-- TODO FOR TESTING UNCOMMENT AFTER DATA HAS BEEN ADDED -->
 if( game == null)
 {
-    <h2>loading...</h2>
+<h2>loading...</h2>
 }
 else
 {
-    <hr/>
-    <Board />
+<hr />
+<Board />
 }
 
-@code{
+@code {
     private Game? game;
 
     //Page load/initialise
