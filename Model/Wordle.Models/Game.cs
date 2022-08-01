@@ -15,7 +15,7 @@ namespace Wordle.Models
 
         //FK -> 1 Game has one *correct* word
         public int CurrentWordId { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public Word Word { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public Word Word { get; set; }
 
 
         public int CurrentPlayerId { get; set; }
