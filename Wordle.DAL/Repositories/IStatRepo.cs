@@ -25,26 +25,11 @@ namespace Wordle.DAL.Repositories
         Task AddStatAsync( Stat stat );
 
         /// <summary>
-        /// Gets Stats.
+        /// Gets all Stats.
         /// </summary>
         /// <param name="id"></param>
         /// <returns>List</returns>
-        Task<List<Stat>> GetAllStatsAsync( int playerId );
-
-        /// <summary>
-        /// Gets Stats.
-        /// </summary>
-        /// <param name="player"></param>
-        /// <returns>List</returns>
-        Task<List<Stat>> GetAllStatsAsync( Player player );
-
-        /// <summary>
-        /// Gets Stats.
-        /// </summary>
-        /// <param name="game"></param>
-        /// <returns>List</returns>
-        Task<List<Stat>> GetAllStatsAsync( Game game );
-
+        Task<List<Stat>> GetAllStatsAsync( );
 
         /// <summary>
         /// Gets Stat by Stat.Id.
@@ -65,6 +50,6 @@ namespace Wordle.DAL.Repositories
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        Task UpdatePlayerStatsAsync( int id );
+        Task UpdatePlayerStatsAsync( Player player );
     }
 }

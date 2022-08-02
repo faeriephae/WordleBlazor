@@ -9,20 +9,13 @@ namespace Wordle.DAL.Repositories
 {
     public interface IGamePlayerRepo
     {
+        #region GAME
         /// <summary>
         /// Gets a (new) game.
         /// </summary>
         /// <param name="game"></param>
         /// <returns></returns>
         Task<Game> GetGameAsync();
-
-        /// <summary>
-        /// Updates Game.
-        /// </summary>
-        /// <param name="game"></param>
-        /// <returns></returns>
-        void UpdateGame( Game game );
-
 
         /// <summary>
         /// Gets Game by id.
@@ -32,24 +25,39 @@ namespace Wordle.DAL.Repositories
         Task<Game> GetGameByIdAsync( int id );
 
         /// <summary>
-        /// Gets Game.
+        /// Gets Game by id.
         /// </summary>
         /// <param name="id"></param>
         /// <returns>Game</returns>
         Game GetGameById( int id );
 
         /// <summary>
-        /// Gets all games belonging to one player.
+        /// Gets all games belonging to one player ( by id )
         /// </summary>
         /// <returns>List</returns>
         Task<List<Game>> GetAllGamesByPlayerIdAsync( int id );
+
+        /// <summary>
+        /// Updates Game.
+        /// </summary>
+        /// <param name="game"></param>
+        /// <returns></returns>
+        void UpdateGame( Game game );
+        #endregion
+
+        #region PLAYER
+        /// <summary>
+        /// Gets a player by id.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Player </returns>
+        Player GetPlayerById( int id );
 
         /// <summary>
         /// Gets player belonging to game id.
         /// </summary>
         /// <returns>Player</returns>
         Task<Player> GetPlayerByGameIdAsync( int id );
-
 
         /// <summary>
         /// Adds Player.
@@ -76,12 +84,6 @@ namespace Wordle.DAL.Repositories
         /// </summary>
         /// <param name="id"></param>
         void DeletePlayerByIdAsync( int id );
-
-        /// <summary>
-        /// Gets a player by id.
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns>Player </returns>
-        Player GetPlayerById( int id );
+        #endregion
     }
 }

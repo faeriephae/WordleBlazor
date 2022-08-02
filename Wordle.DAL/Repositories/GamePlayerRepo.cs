@@ -16,31 +16,37 @@ namespace Wordle.DAL.Repositories
             this._dataContext = dataContext;
         }
 
-        public async Task AddPlayerAsync( Player player )
-        {
-            await _dataContext.Players.AddAsync(player);
-        }
-
-        public async void DeletePlayerByIdAsync( int id )
-        {
-            _dataContext.Remove(await GetPlayerByIdAsync(id));
-        }
-
+        #region PLAYER
         public async Task<List<Player>> GetAllPlayersAsync()
         {
             return await _dataContext.Players.ToListAsync();
         }
-
         public async Task<Player> GetPlayerByIdAsync( int id )
         {
             return await _dataContext.Players.FindAsync(id);
         }
-
         public Player GetPlayerById( int id )
         {
             return _dataContext.Players.Find(id);
         }
+        public async Task AddPlayerAsync( Player player )
+        {
+            await _dataContext.Players.AddAsync(player);
+        }
+        public async Task<Player> GetPlayerByGameIdAsync( int id )
+        {
+            var player = from p in await _dataContext.Games.Where(g => g.Id == id).ToListAsync()
+                         select p.Player;
 
+            return (Player)player;
+        }
+        public async void DeletePlayerByIdAsync( int id )
+        {
+            _dataContext.Remove(await GetPlayerByIdAsync(id));
+        }
+        #endregion
+
+        #region GAME
         public async Task<Game> GetGameByIdAsync( int id )
         {
             return await _dataContext.Games.FindAsync(id);
@@ -59,14 +65,6 @@ namespace Wordle.DAL.Repositories
             return (List<Game>)games;
         }
 
-        public async Task<Player> GetPlayerByGameIdAsync( int id )
-        {
-            var player = from p in await _dataContext.Games.Where(g => g.Id == id).ToListAsync()
-                         select p.Player;
-
-            return (Player)player;
-        }
-
         public void UpdateGame( Game game )
         {
             _dataContext.Games.Update(game);
@@ -77,5 +75,6 @@ namespace Wordle.DAL.Repositories
         {
             throw new NotImplementedException();
         }
+        #endregion
     }
 }
