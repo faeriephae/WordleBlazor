@@ -17,6 +17,7 @@ namespace Wordle.DAL
             }
         }
 
+        //Check if programm is running on vr/9g pc
         private bool IsMain()
         {
             if (File.Exists(@"C:\Users\r019cvr"))
