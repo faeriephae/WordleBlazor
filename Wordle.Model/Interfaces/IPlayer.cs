@@ -10,6 +10,7 @@ namespace Wordle.Model.Interfaces
     {
         public int Id { get; set; }
         public string? IP { get; set; }
-        public char? Language { get; set; }
+        public string? Language { get; set; }
+        public string? Email { get; set; }
     }
 }

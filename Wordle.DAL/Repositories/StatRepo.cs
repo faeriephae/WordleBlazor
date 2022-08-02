@@ -21,10 +21,10 @@ namespace Wordle.DAL.Repositories
             return await _dataContext.Stats.FindAsync(id);
         }
 
-        public async Task<Stat> GetStatAsync( Player player )
-        {
-            return await _dataContext.Stats.Where(p => p.Game.PlayerId == player.Id).FirstOrDefaultAsync();
-        }
+        //public async Task<Stat> GetStatAsync( Player player )
+        //{
+        //    return await _dataContext.Games.Where(p => p.Player.Id == player.Id).FirstOrDefaultAsync();
+        //}
 
         public async Task<List<Stat>> GetAllStatsAsync()
         {
@@ -48,9 +48,14 @@ namespace Wordle.DAL.Repositories
             await _dataContext.AddAsync(stat);
         }
 
-        public async Task UpdatePlayerStatsAsync( Player player  )
+        public Task UpdatePlayerStatsAsync(Player player)
         {
-            _dataContext.Stats.UpdateRange(await GetStatAsync(player));
+            throw new NotImplementedException();
         }
+
+        //public async Task UpdatePlayerStatsAsync( Player player  )
+        //{
+        //    _dataContext.Stats.UpdateRange(await GetStatAsync(player));
+        //}
     }
 }

@@ -8,7 +8,6 @@ namespace Wordle.Model.Interfaces
 {
     public interface IDateWord
     {
-        public int Id { get; set; }
         public int WordId { get; set; }
         public Word Word { get; set; }
         public DateTime Date { get; set; }
