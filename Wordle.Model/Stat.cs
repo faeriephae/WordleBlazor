@@ -18,6 +18,7 @@ namespace Wordle.Model
         public int GameId { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public Game Game { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
+
         [Required]
         public int GamesPlayed { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 

@@ -20,7 +20,6 @@ namespace Wordle.Model
         [StringLength(2), Column(TypeName = "varchar")]
         public char? Language { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
-        [NotMapped]
-        public ICollection<IGame> Games { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public virtual ICollection<IGame> Games { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     }
 }
