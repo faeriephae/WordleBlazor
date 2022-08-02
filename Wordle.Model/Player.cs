@@ -18,13 +18,8 @@ namespace Wordle.Model
         public string IP { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         [StringLength(2), Column(TypeName = "varchar")]
-        public string? Language { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public char? Language { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
-        [StringLength(50)]
-        public string? Email { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
-        //FK
-        [NotMapped]
         public virtual ICollection<IGame> Games { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     }
 }

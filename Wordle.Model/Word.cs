@@ -15,5 +15,6 @@ namespace Wordle.Model
 
         [Required, StringLength(5)]
         public string Term { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int Difficulty { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     }
 }

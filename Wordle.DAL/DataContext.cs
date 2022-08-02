@@ -7,32 +7,13 @@ namespace Wordle.DAL
     {
         protected override void OnConfiguring( DbContextOptionsBuilder optionsBuilder )
         {
-            if (IsMain())
-            {
-                optionsBuilder.UseSqlServer(Resource.testDbConStr);
-            }
-            else
-            {
-                optionsBuilder.UseSqlServer(Resource.testDbConStr9g);
-            }
-        }
-
-        private bool IsMain()
-        {
-            if (File.Exists(@"C:\Users\r019cvr"))
-            {
-                return true;
-            }
-            
-            return false;
+            optionsBuilder.UseSqlServer( Resource.testDbConStr);
         }
 
         protected override void OnModelCreating( ModelBuilder modelBuilder )
         {
             //Primary key from Stat.cs --> PlayerId + GameId
-            modelBuilder.Entity<DateWord>().HasKey(id => new { id.WordId, id.Date });
-
-            modelBuilder.Entity<Stat>().HasKey(id => new { id.Id, id.PlayerId });
+            //modelBuilder.Entity<Stat>().HasKey(id => new { id.PlayerId, id.GameId });
         }
 
         //Tables to build
