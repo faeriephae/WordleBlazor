@@ -15,9 +15,17 @@ namespace Wordle.Model
         [Key, Required]
         public int PlayerId { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public int GamesPlayed { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        [Required]
         public int GamesWon { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        [Required]
         public int MaxStreak { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        [Required]
         public int Streak { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        [Required]
         public int WinPercentage { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public virtual Player Player { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }

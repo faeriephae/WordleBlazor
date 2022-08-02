@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Wordle.DAL;
 
@@ -11,9 +12,10 @@ using Wordle.DAL;
 namespace Wordle.DAL.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20220801111510_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,13 +26,21 @@ namespace Wordle.DAL.Migrations
 
             modelBuilder.Entity("Wordle.Model.DateWord", b =>
                 {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("WordId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("DATETIME2");
+                    b.HasKey("Id");
 
-                    b.HasKey("WordId", "Date");
+                    b.HasIndex("WordId");
 
                     b.ToTable("DateWords");
                 });
@@ -43,8 +53,8 @@ namespace Wordle.DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("DateWordId")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("CurrentDate")
+                        .HasColumnType("DATETIME2");
 
                     b.Property<int>("NumTries")
                         .HasColumnType("int");
@@ -72,17 +82,14 @@ namespace Wordle.DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("IP")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Language")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(1)");
+                        .HasMaxLength(2)
+                        .HasColumnType("varchar(2)");
 
                     b.HasKey("Id");
 
@@ -92,13 +99,10 @@ namespace Wordle.DAL.Migrations
             modelBuilder.Entity("Wordle.Model.Stat", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("PlayerId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");                    
 
                     b.Property<int>("GameId")
                         .HasColumnType("int");
@@ -118,9 +122,9 @@ namespace Wordle.DAL.Migrations
                     b.Property<int>("WinPercentage")
                         .HasColumnType("int");
 
-                    b.HasKey("Id", "PlayerId");
+                    b.HasKey("Id");
 
-                    b.HasIndex("PlayerId");
+                    b.HasIndex("GameId");
 
                     b.ToTable("Stats");
                 });
@@ -133,19 +137,34 @@ namespace Wordle.DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<int>("Difficulty")
+                        .HasColumnType("int");
+
                     b.Property<string>("Term")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(5)
+                        .HasColumnType("nvarchar(5)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Words");
                 });
 
+            modelBuilder.Entity("Wordle.Model.DateWord", b =>
+                {
+                    b.HasOne("Wordle.Model.Word", "Word")
+                        .WithMany()
+                        .HasForeignKey("WordId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Word");
+                });
+
             modelBuilder.Entity("Wordle.Model.Game", b =>
                 {
                     b.HasOne("Wordle.Model.Player", "Player")
-                        .WithMany("Games")
+                        .WithMany()
                         .HasForeignKey("PlayerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -163,18 +182,13 @@ namespace Wordle.DAL.Migrations
 
             modelBuilder.Entity("Wordle.Model.Stat", b =>
                 {
-                    b.HasOne("Wordle.Model.Player", "Player")
+                    b.HasOne("Wordle.Model.Game", "Game")
                         .WithMany()
-                        .HasForeignKey("PlayerId")
+                        .HasForeignKey("GameId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Player");
-                });
-
-            modelBuilder.Entity("Wordle.Model.Player", b =>
-                {
-                    b.Navigation("Games");
+                    b.Navigation("Game");
                 });
 #pragma warning restore 612, 618
         }

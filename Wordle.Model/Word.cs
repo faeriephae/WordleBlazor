@@ -12,6 +12,8 @@ namespace Wordle.Model
     {
         [Key]
         public int Id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        [Required, StringLength(5)]
         public string Term { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     }
 }
