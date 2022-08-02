@@ -9,15 +9,13 @@ namespace Wordle.Model.Interfaces
     public interface IStat
     {
         public int Id { get; set; }
-
-        //Game has Player.Id
-        int GameId { get; set; }
-        public Game Game { get; set; }
-
+        int PlayerId { get; set; }       
         int GamesPlayed { get; set; }
         int GamesWon { get; set; }
         int MaxStreak { get; set; }
         int Streak { get; set; }
         int WinPercentage { get; set; }
+
+        public Player Player { get; set; }
     }
 }

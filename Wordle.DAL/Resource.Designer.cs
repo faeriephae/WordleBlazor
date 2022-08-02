@@ -22,7 +22,7 @@ namespace Wordle.DAL {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resource {
+    public class Resource {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace Wordle.DAL {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Wordle.DAL.Resource", typeof(Resource).Assembly);
@@ -51,7 +51,7 @@ namespace Wordle.DAL {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,18 +63,36 @@ namespace Wordle.DAL {
         /// <summary>
         ///   Looks up a localized string similar to Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\r019cvr\source\repos\SchoolProjects\WordleBlazor\Wordle.DAL\Database\WordleDB.mdf;Integrated Security=True.
         /// </summary>
-        internal static string prodDbConStr {
+        public static string prodDbConStr {
             get {
                 return ResourceManager.GetString("prodDbConStr", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\r019c9g\source\repos\SchoolProjects\WordleBlazor\Wordle.DAL\Database\WordleDB.mdf;Integrated Security=True.
+        /// </summary>
+        public static string prodDbConStr9g {
+            get {
+                return ResourceManager.GetString("prodDbConStr9g", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\r019cvr\source\repos\SchoolProjects\WordleBlazor\Wordle.DAL\Database\TestDB.mdf;Integrated Security=True.
         /// </summary>
-        internal static string testDbConStr {
+        public static string testDbConStr {
             get {
                 return ResourceManager.GetString("testDbConStr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\r019c9g\source\repos\SchoolProjects\WordleBlazor\Wordle.DAL\Database\TestDB.mdf;Integrated Security=True.
+        /// </summary>
+        public static string testDbConStr9g {
+            get {
+                return ResourceManager.GetString("testDbConStr9g", resourceCulture);
             }
         }
     }

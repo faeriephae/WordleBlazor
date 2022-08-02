@@ -24,18 +24,18 @@ namespace Wordle.DAL.Repositories
 
         public async Task<List<Stat>> GetAllStatsAsync( Player player )
         {
-            return await _dataContext.Stats.Where(p => p.Game.PlayerId == player.Id).ToListAsync();
+            return await _dataContext.Stats.Where(p => p.Player.Id == player.Id).ToListAsync();
         }
 
         public async Task<List<Stat>> GetAllStatsAsync( Game game )
         {
-            return await _dataContext.Stats.Where(g => g.Game == game).ToListAsync();
+            return await _dataContext.Stats.Where(g => g.Player.Games == game).ToListAsync();
         }
 
 
         public async Task<List<Stat>> GetAllStatsAsync( int playerId )
         {
-            return await _dataContext.Stats.Where(p => p.Game.PlayerId == playerId).ToListAsync();
+            return await _dataContext.Stats.Where(p => p.Player.Id == playerId).ToListAsync();
         }
 
         //TODO
