@@ -1,0 +1,28 @@
+﻿<!-- Components/Board -->
+@using Wordle.ViewModel.Components
+
+<div class="board comp"> 
+    <Row id="row1"/>
+    <Row id="row2"/>
+    <Row id="row3"/>
+    <Row id="row4"/>
+    <Row id="row5"/>
+    <Row id="row6"/>
+</div>
+
+<style scoped>
+    .board {
+        margin: 0 auto;
+        display: grid;
+        grid-auto-rows: auto;
+        background-color: rgba(19, 19, 19, 0.79);
+        padding: 0;
+        /* in px so it doesn't scale */
+        width: 400px;
+        height: 400px;
+    }
+</style>
+
+@code {
+
+}

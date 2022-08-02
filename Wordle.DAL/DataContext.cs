@@ -7,14 +7,7 @@ namespace Wordle.DAL
     {
         protected override void OnConfiguring( DbContextOptionsBuilder optionsBuilder )
         {
-            if (IsMain())
-            {
-                optionsBuilder.UseSqlServer(Resource.testDbConStr);
-            }
-            else
-            {
-                optionsBuilder.UseSqlServer(Resource.testDbConStr9g);
-            }
+            optionsBuilder.UseSqlServer(Resource.testDbConStr);
         }
 
         private bool IsMain()
