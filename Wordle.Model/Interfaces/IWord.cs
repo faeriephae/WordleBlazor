@@ -10,5 +10,8 @@ namespace Wordle.Model.Interfaces
     {
         public int Id { get; set; }
         public string Term { get; set; }
+
+        //Optional
+        public int Difficulty { get; set; }
     }
 }
