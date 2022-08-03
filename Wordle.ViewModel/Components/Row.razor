@@ -1,8 +1,8 @@
 ﻿<!-- Components/Rows -->
 @using Components
+@using Wordle.Model
 
-
-<div class="row comp"> 
+<div class="row comp">
     <Square />
     <Square />
     <Square />
@@ -20,5 +20,7 @@
 </style>
 
 @code {
+    [Parameter]
+    public Model.Square? square { get; set; }
 
 }

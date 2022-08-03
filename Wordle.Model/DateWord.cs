@@ -16,5 +16,6 @@ namespace Wordle.Model
 
         [Required, Key, Column(TypeName="DATETIME2")]
         public DateTime Date { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public Word Word { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     }
 }

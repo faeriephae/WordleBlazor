@@ -23,12 +23,12 @@ namespace Wordle.DAL.Repositories
 
         public async Task<Stat> GetStatAsync( Player player )
         {
-            return await _dataContext.Stats.Where(p => p.Player.Id == player.Id).ToListAsync();
+            throw new NotImplementedException();
         }
 
         public async Task<List<Stat>> GetAllStatsAsync()
         {
-            return await _dataContext.Stats.Where(g => g.Player.Games == game).ToListAsync();
+            throw new NotImplementedException();
         }
 
 
