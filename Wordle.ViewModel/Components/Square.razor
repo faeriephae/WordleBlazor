@@ -1,13 +1,21 @@
 ﻿<!-- Components/Square -->
+@using Wordle.Model
 
-<div class="square comp" ></div>
+<div class="square comp" @onclick="@Click">
+    @if(sq != null)
+    {
+        if(Char.IsLetter(sq.Letter))
+        {
+
+        }
+    }
+</div>
 
 <style scoped>
     .square {
         background-color: rgba(19, 19, 19, 0.79);
         border: none;
         box-sizing: border-box;
-        /* 100: 5 = 20 */
         width: 75px;
         height: 75px;
         margin: 2px 2px 2px 3px;
@@ -18,11 +26,29 @@
         cursor: pointer;
     }
 
-    .square:hover {
-        background-color: rgba(80, 80, 80, 1);
-    }
+        .square:hover {
+            background-color: rgba(80, 80, 80, 1);
+        }
 </style>
 
 @code {
+    [Parameter]
+    public Model.Square sq { get; set; }
 
+    [Parameter]
+    public Action<MouseEventArgs> ClickSquare { get; set; }
+
+    [Parameter]
+    public Action<KeyboardEventArgs> KeySquare { get; set; }
+
+    public void Click( MouseEventArgs mouseEventArgs )
+    {
+        ClickSquare?.Invoke(mouseEventArgs);
+    }
+
+    //doesn't work
+    public void Type( KeyboardEventArgs keyboardEventArgs )
+    {
+        KeySquare?.Invoke(keyboardEventArgs);
+    }
 }
