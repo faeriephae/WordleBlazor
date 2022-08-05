@@ -24,13 +24,21 @@ namespace Wordle.DAL.Migrations
 
             modelBuilder.Entity("Wordle.Model.DateWord", b =>
                 {
-                    b.Property<int>("WordId")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("DATETIME2");
 
-                    b.HasKey("WordId", "Date");
+                    b.Property<int>("WordId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("WordId");
 
                     b.ToTable("DateWords");
                 });
@@ -52,14 +60,11 @@ namespace Wordle.DAL.Migrations
                     b.Property<int>("PlayerId")
                         .HasColumnType("int");
 
-                    b.Property<int>("WordId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("PlayerId");
+                    b.HasIndex("DateWordId");
 
-                    b.HasIndex("WordId");
+                    b.HasIndex("PlayerId");
 
                     b.ToTable("Games");
                 });
@@ -82,7 +87,8 @@ namespace Wordle.DAL.Migrations
 
                     b.Property<string>("Language")
                         .IsRequired()
-                        .HasColumnType("nvarchar(1)");
+                        .HasMaxLength(2)
+                        .HasColumnType("nvarchar(2)");
 
                     b.HasKey("Id");
 
@@ -94,13 +100,7 @@ namespace Wordle.DAL.Migrations
                     b.Property<int>("Id")
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
                     b.Property<int>("PlayerId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");                    
-
-                    b.Property<int>("GameId")
                         .HasColumnType("int");
 
                     b.Property<int>("GamesPlayed")
@@ -135,30 +135,42 @@ namespace Wordle.DAL.Migrations
 
                     b.Property<string>("Term")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(5)
+                        .HasColumnType("nvarchar(5)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Words");
                 });
 
-            modelBuilder.Entity("Wordle.Model.Game", b =>
+            modelBuilder.Entity("Wordle.Model.DateWord", b =>
                 {
-                    b.HasOne("Wordle.Model.Player", "Player")
-                        .WithMany("Games")
-                        .HasForeignKey("PlayerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Wordle.Model.Word", "Word")
                         .WithMany()
                         .HasForeignKey("WordId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Player");
-
                     b.Navigation("Word");
+                });
+
+            modelBuilder.Entity("Wordle.Model.Game", b =>
+                {
+                    b.HasOne("Wordle.Model.DateWord", "DateWord")
+                        .WithMany()
+                        .HasForeignKey("DateWordId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Wordle.Model.Player", "Player")
+                        .WithMany("Games")
+                        .HasForeignKey("PlayerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("DateWord");
+
+                    b.Navigation("Player");
                 });
 
             modelBuilder.Entity("Wordle.Model.Stat", b =>
