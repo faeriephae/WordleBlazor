@@ -12,7 +12,7 @@ using Wordle.DAL;
 namespace Wordle.DAL.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220805084752_initial")]
+    [Migration("20220805093039_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

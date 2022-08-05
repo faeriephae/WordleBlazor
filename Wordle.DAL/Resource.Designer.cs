@@ -61,20 +61,11 @@ namespace Wordle.DAL {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\r019cvr\source\repos\SchoolProjects\WordleBlazor\Wordle.DAL\Database\WordleDB.mdf;Integrated Security=True.
+        ///   Looks up a localized string similar to Data Source=wolsqlentwicklung;Initial Catalog=Wordle;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False.
         /// </summary>
         public static string prodDbConStr {
             get {
                 return ResourceManager.GetString("prodDbConStr", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\r019c9g\source\repos\SchoolProjects\WordleBlazor\Wordle.DAL\Database\WordleDB.mdf;Integrated Security=True.
-        /// </summary>
-        public static string prodDbConStr9g {
-            get {
-                return ResourceManager.GetString("prodDbConStr9g", resourceCulture);
             }
         }
         
@@ -84,15 +75,6 @@ namespace Wordle.DAL {
         public static string testDbConStr {
             get {
                 return ResourceManager.GetString("testDbConStr", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\r019c9g\source\repos\SchoolProjects\WordleBlazor\Wordle.DAL\Database\TestDB.mdf;Integrated Security=True.
-        /// </summary>
-        public static string testDbConStr9g {
-            get {
-                return ResourceManager.GetString("testDbConStr9g", resourceCulture);
             }
         }
     }
