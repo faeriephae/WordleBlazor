@@ -1,15 +1,15 @@
 ﻿<!-- Components/Board -->
 @using Wordle.ViewModel.Components
 
-<div class="board" @ref="firstInput"> 
+<div class="board"> 
     @for(int i = 0; i < 30; i += 5)
     {
         <table>
             <tr>
                 @for (int j = 0; j < 5; j++)
                 {
-                    int sqNumber = j;
-                    <td><Square  @key=sqNumber value=values[i+j]/></td>
+                    int sqNumber = i + j;
+                    <td><input class="input" @onkeypress="@KeyDown" @ref="firstInput[sqNumber]"/></td>
                 }
             </tr>
         </table>
@@ -39,7 +39,10 @@
 </style>
 
 @code {
-    private ElementReference firstInput;
+    [Inject]
+    public IJSRuntime JSRuntime { get; set; }
+
+    private ElementReference[] firstInput = new ElementReference[30];
 
     public char value { get; set; }
 
@@ -47,13 +50,13 @@
 
     private char[] values = new char[30];
 
-    //protected async override Task OnAfterRenderAsync(bool firstRender)
-    //{
-    //    if (firstRender)
-    //    {
-    //        await JsRuntime.InvokeVoidAsync("SetFocusToElement", firstInput);
-    //    }
-    //}
+    protected async override Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await firstInput[currSq].FocusAsync();
+        }
+    }
 
     private void KeyDown(KeyboardEventArgs e)
     {
@@ -61,6 +64,11 @@
         {
             values[currSq] = Convert.ToChar(e.Key);
             currSq++;
-        }        
+            firstInput[currSq].FocusAsync();
+        }
+        else
+        {
+            throw new NotImplementedException();
+        }
     }
 }
