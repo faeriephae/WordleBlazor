@@ -7,24 +7,7 @@ namespace Wordle.DAL
     {
         protected override void OnConfiguring( DbContextOptionsBuilder optionsBuilder )
         {
-            if (IsMain())
-            {
-                optionsBuilder.UseSqlServer(Resource.testDbConStr);
-            }
-            else
-            {
-                optionsBuilder.UseSqlServer(Resource.testDbConStr9g);
-            }
-        }
-
-        //Check if programm is running on vr/9g pc
-        private bool IsMain()
-        {
-            if (File.Exists(@"C:\Users\r019cvr"))
-            {
-                return true;
-            }
-            return false;
+            optionsBuilder.UseSqlServer(Resource.testDbConStr);
         }
 
         protected override void OnModelCreating( ModelBuilder modelBuilder )
