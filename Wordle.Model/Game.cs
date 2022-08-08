@@ -13,7 +13,7 @@ namespace Wordle.Model
         public int DateWordId { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public int NumTries { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
-        public virtual Word Word { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public virtual Player Player { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public virtual DateWord DateWord { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     }
 }

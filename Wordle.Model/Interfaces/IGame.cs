@@ -13,7 +13,6 @@ namespace Wordle.Model.Interfaces
         public int DateWordId { get; set; }
         public int NumTries { get; set; }
 
-        public Word Word { get; set; }
         public Player Player { get; set; }
     }
 }

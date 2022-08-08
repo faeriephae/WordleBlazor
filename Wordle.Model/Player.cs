@@ -13,7 +13,9 @@ namespace Wordle.Model
         [Key]
         public int Id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public string IP { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public char Language { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        [StringLength(2)]
+        public string Language { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public string Email { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public virtual ICollection<Game> Games { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }

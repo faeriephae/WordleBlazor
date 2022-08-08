@@ -1,8 +1,4 @@
-﻿@using Wordle.Model
-@using Wordle.ViewModel.Components
-@using Wordle.DAL
-
-@*@inject Wordle.DAL.Repositories.UnitOfWork UnitOfWork*@
+﻿@using Wordle.ViewModel.Components
 @page "/"
 
 <PageTitle>Home</PageTitle>
@@ -12,13 +8,3 @@
 Welcome to your new app.
 
 <Board />
-@code{
-    //UNCOMMENT LATER
-    //private Game? game;
-
-    ////Page load/initialise
-    //protected override async Task OnInitializedAsync()
-    //{
-    //    game = await UnitOfWork.GamePlayerRepo.GetGameAsync();
-    //}
-}
