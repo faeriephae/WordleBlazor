@@ -2,12 +2,12 @@
 @using Components
 @using Wordle.Model
 
-<div class="row comp">    
-    @for(int i = 0; i < 5; i++)
-    {
-        int sqNumber = i;
-        <Square @key=sqNumber @onkeydown=KeyDown/>
-    }
+<div class="row comp">
+    <Square />
+    <Square />
+    <Square />
+    <Square />
+    <Square />
 </div>
 
 <style scoped>
@@ -21,15 +21,7 @@
 </style>
 
 @code {
-    public char value { get; set; }
+    [Parameter]
+    public Model.Square? square { get; set; }
 
-    private int currSq = 0;
-
-    private char[] values = new char[30];
-
-    private void KeyDown(KeyboardEventArgs e)
-    {
-        values[currSq] = Convert.ToChar(e.Key);
-        currSq++;
-    }
 }

@@ -1,21 +1,13 @@
 ﻿<!-- Components/Board -->
 @using Wordle.ViewModel.Components
-@using Microsoft.AspNetCore.Components.Web
-@inject IJSRuntime JsRuntime
 
-<div class="board" @ref="firstInput"> 
-    @for(int i = 0; i < 30; i += 5)
-    {
-        <table>
-            <tr>
-                @for (int j = 0; j < 5; j++)
-                {
-                    int sqNumber = j;
-                    <td><Square  @key=sqNumber value=values[i+j]/></td>
-                }
-            </tr>
-        </table>
-    }
+<div class="board"> 
+    <Row />
+    <Row />
+    <Row />
+    <Row />
+    <Row />
+    <Row />
 </div>
 
 <style scoped>
@@ -29,40 +21,8 @@
         width: 400px;
         height: 500px;
     }
-
-    .input {
-            height: 100%;
-            width: 100%;
-            padding: 0;
-            background-color: inherit;
-            border: none;
-            color: white;
-        }
 </style>
 
 @code {
-    private ElementReference firstInput;
 
-    public char value { get; set; }
-
-    private int currSq = 0;
-
-    private char[] values = new char[30];
-
-    protected async override Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            await JsRuntime.InvokeVoidAsync("SetFocusToElement", firstInput);
-        }
-    }
-
-    private void KeyDown(KeyboardEventArgs e)
-    {
-        if (currSq < 30)
-        {
-            values[currSq] = Convert.ToChar(e.Key);
-            currSq++;
-        }        
-    }
 }

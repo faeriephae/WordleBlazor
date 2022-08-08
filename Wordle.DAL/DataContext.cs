@@ -30,6 +30,7 @@ namespace Wordle.DAL
         protected override void OnModelCreating( ModelBuilder modelBuilder )
         {
             //Primary key from Stat.cs --> PlayerId + GameId
+            modelBuilder.Entity<DateWord>().HasKey(id => new { id.WordId, id.Date });
             modelBuilder.Entity<Stat>().HasKey(id => new { id.Id, id.PlayerId });
         }
 

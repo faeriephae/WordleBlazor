@@ -73,8 +73,6 @@ namespace Wordle.DAL.Repositories
         //TODO
         public Task<Game> GetGameAsync()
         {
-            Game game = new Game();
-            _dataContext.Games.Add(game);
             throw new NotImplementedException();
         }
         #endregion
