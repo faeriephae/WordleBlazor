@@ -1,19 +1,19 @@
 ﻿<!-- Components/Board -->
 @using Wordle.ViewModel.Components
 
-<div class="board"> 
+<div class="board">
+    <table>
     @for(int i = 0; i < 30; i += 5)
-    {
-        <table>
-            <tr>
-                @for (int j = 0; j < 5; j++)
-                {
-                    int sqNumber = i + j;
-                    <td><input class="input" @onkeypress="@KeyDown" @ref="firstInput[sqNumber]"/></td>
-                }
-            </tr>
-        </table>
+    {        
+        <tr>
+            @for (int j = 0; j < 5; j++)
+            {
+                int sqNumber = i + j;
+                <td><input type="text" class="input" @onkeypress="@Enter" @ref="Squares[sqNumber]" maxlength="1" onkeydown="return /[a-z]/i.test(event.key)"/></td>
+            }
+        </tr>        
     }
+    </table>
 </div>
 
 <style scoped>
@@ -29,12 +29,22 @@
     }
 
     .input {
-            height: 100%;
-            width: 100%;
-            padding: 0;
-            background-color: inherit;
-            border: none;
-            color: white;
+        height: 100%;
+        width: 100%;
+        padding: 0;
+        background-color: @Color;
+        border: none;
+        color: white;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    .input[type=text]:focus{
+        outline: none;
+    }
+
+        td {
+            border: 1px solid red;
         }
 </style>
 
@@ -42,33 +52,48 @@
     [Inject]
     public IJSRuntime JSRuntime { get; set; }
 
-    private ElementReference[] firstInput = new ElementReference[30];
+    [Parameter]
+    public string Color { get; set; } = "inherit";
 
-    public char value { get; set; }
+    private ElementReference[] Squares = new ElementReference[30];
 
     private int currSq = 0;
 
+    private int endOfLine = 4;
+
     private char[] values = new char[30];
+
+    string word = "HELLO";
 
     protected async override Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            await firstInput[currSq].FocusAsync();
+            await Squares[currSq].FocusAsync();
         }
     }
 
-    private void KeyDown(KeyboardEventArgs e)
+    private void Enter(KeyboardEventArgs e)
     {
-        if (currSq < 30)
+        if (currSq == endOfLine && e.Key == "Enter")
+        {
+
+            for (int i = endOfLine - 4; i <= currSq; i++){
+                Color = "green";
+                Console.WriteLine(values[i]);
+            }
+
+
+            Squares[++currSq].FocusAsync();
+            endOfLine += 5;
+        }
+        else if(currSq < 29 && char.IsLetter(Convert.ToChar(e.Key)))
         {
             values[currSq] = Convert.ToChar(e.Key);
-            currSq++;
-            firstInput[currSq].FocusAsync();
-        }
-        else
-        {
-            throw new NotImplementedException();
-        }
+            if (currSq != endOfLine)
+            {
+                Squares[++currSq].FocusAsync();
+            }
+        }        
     }
 }
