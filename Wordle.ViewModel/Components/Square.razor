@@ -1,11 +1,15 @@
 ﻿<!-- Components/Square -->
 @using Wordle.Model
+@using Wordle.ViewModel.Classes
+@inject GameManager gameManager
 
-<div class="square comp" onkeydown=@HandleKey @onfocusin="Focus" ><input @ref="input" maxlength="1"/></div>
+@*<div class="square comp" onkeydown=@HandleKey @onfocusin="Focus" ><input @ref="input" maxlength="1"/></div>*@
+
+<input  class="square @CssClasses" @onkeyup="@OnKeyUpHandler" @bind="InputText" @bind:event="oninput" @ref="gameManager.Squares[RowIndex, ColumnIndex]" onkeydown="return /[a-z]/i.test(event.key)" maxlength="1"/>
 
 <style scoped>
     .square {
-        background-color: rgba(19, 19, 19, 0.79);
+       /* background-color: rgba(19, 19, 19, 0.79);
         border: none;
         box-sizing: border-box;
         width: 75px;
@@ -16,10 +20,12 @@
         vertical-align: middle;
         color: white;
         border: 2px solid rgba(80, 80, 80, 1);
-        cursor: pointer;
+        cursor: pointer;*/
+        width: 75px;
+        text-transform: uppercase;
     }
 
-        .square:hover {
+     /*   .square:hover {
             background-color: rgba(80, 80, 80, 1);
         }
 
@@ -30,23 +36,81 @@
             background-color: inherit;
             border: none;
             color: white;
+        }*/
+
+        .g {
+            background-color: green;
+        }
+
+        .o {
+            background-color: orange;
         }
 </style>
 
 @code {
     [Parameter]
-    public char value { get; set; }
-
+    public int RowIndex { get; set; }
     [Parameter]
-    public EventCallback HandleKey { get; set; }
+    public int ColumnIndex { get; set; }
 
-    private ElementReference input;
+    private string? InputText { get; set; } = "";
 
-    private async void Focus()
+    private string? CssClasses { get; set; }
+
+
+    private void OnKeyUpHandler(KeyboardEventArgs e)
     {
-        await input.FocusAsync();
+        Console.WriteLine("1: " +InputText);
+        if (ColumnIndex == gameManager.NumberColumns - 1 && RowIndex < gameManager.NumberRows - 1 && InputText != string.Empty && e.Key == "Enter")
+        {
+            //go to first column of next row
+            if (gameManager.CheckRow(RowIndex)[gameManager.NumberColumns - 1] == "g")
+            {
+                CssClasses = "g";
+            }
+            gameManager.FocusNextSquare(RowIndex + 1, 0);
 
+        }
+        else if (InputText.Length == 1 && InputText != "")
+        {
+            gameManager.Field[RowIndex, ColumnIndex] = InputText != "" ? InputText.ToUpper() : "";
+
+            if (ColumnIndex < 4)
+            {
+                //go to next column
+                
+                gameManager.FocusNextSquare(RowIndex, ColumnIndex + 1);
+            }
+        }
+        //Just for tests. Can be deleted when fields are focused automaticaly and rows change on "Enter" being pressed
+        //else if (e.Key.Length == 1 && InputText != "")
+        //{
+        //    CssClasses = "o";
+        //    if (ColumnIndex < 4)
+        //    {
+        //        gameManager.Field[RowIndex, ColumnIndex] = InputText != "" ? InputText.ToUpper() : "";
+        //        Console.WriteLine($"Writing {gameManager.Field[RowIndex, ColumnIndex]} into the table");
+        //        gameManager.FocusNextSquare(RowIndex, ColumnIndex + 1);
+        //    }
+        //}
+
+        
+        Console.WriteLine("3: " + e.Key);
     }
+
+    //[Parameter]
+    //public char value { get; set; }
+
+    //[Parameter]
+    //public EventCallback HandleKey { get; set; }
+
+    //private ElementReference input;
+
+    //private async void Focus()
+    //{
+    //    await input.FocusAsync();
+
+    //}
 
     //protected async override Task OnAfterRenderAsync(bool firstRender)
     //{
