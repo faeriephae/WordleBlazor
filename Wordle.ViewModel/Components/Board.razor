@@ -4,12 +4,12 @@
 <div class="board">
     <table>
     @for(int i = 0; i < 30; i += 5)
-    {        
-        <tr>
-            @for (int j = 0; j < 5; j++)
-            {
-                int sqNumber = i + j;
-                <td><input type="text" class="input" @onkeypress="@Enter" @ref="Squares[sqNumber]" maxlength="1" onkeydown="return /[a-z]/i.test(event.key)"/></td>
+        {
+            <tr>
+                @for (int j = 0; j < 5; j++)
+                {
+                    int sqNumber = i + j;
+                    <td><input type="text" class="input" @onkeypress="@Enter" @ref="Squares[sqNumber]" maxlength="1" onkeydown="return /[a-z]/i.test(event.key)"/></td>
             }
         </tr>        
     }
@@ -29,12 +29,13 @@
     }
 
     .input {
-        height: 100%;
+        height: 80px;
         width: 100%;
         padding: 0;
         background-color: @Color;
         border: none;
         color: white;
+        margin: 0 auto;
         text-align: center;
         text-transform: uppercase;
     }
@@ -45,6 +46,8 @@
 
         td {
             border: 1px solid red;
+            padding: 0;
+            margin: 0;
         }
 </style>
 
@@ -54,6 +57,10 @@
 
     [Parameter]
     public string Color { get; set; } = "inherit";
+
+    private IJSObjectReference module;
+
+
 
     private ElementReference[] Squares = new ElementReference[30];
 
@@ -73,6 +80,13 @@
         }
     }
 
+    private void Press(KeyboardEventArgs e)
+    {
+        values[currSq] = Convert.ToChar(e.Key);
+        Console.WriteLine(e.Key);
+        currSq++;
+    }
+
     private void Enter(KeyboardEventArgs e)
     {
         if (currSq == endOfLine && e.Key == "Enter")
@@ -87,7 +101,7 @@
             Squares[++currSq].FocusAsync();
             endOfLine += 5;
         }
-        else if(currSq < 29 && char.IsLetter(Convert.ToChar(e.Key)))
+        else if(e.Key.Length == 1 && currSq < 29 && char.IsLetter(Convert.ToChar(e.Key)))
         {
             values[currSq] = Convert.ToChar(e.Key);
             if (currSq != endOfLine)
