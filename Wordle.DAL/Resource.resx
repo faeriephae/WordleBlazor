@@ -118,16 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="prodDbConStr" xml:space="preserve">
-    <value>Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\r019cvr\source\repos\SchoolProjects\WordleBlazor\Wordle.DAL\Database\WordleDB.mdf;Integrated Security=True</value>
-  </data>
-  <data name="prodDbConStr9g" xml:space="preserve">
-    <value>Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\r019c9g\source\repos\SchoolProjects\WordleBlazor\Wordle.DAL\Database\WordleDB.mdf;Integrated Security=True</value>
+    <value>Data Source=wolsqlentwicklung;Initial Catalog=Wordle;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False</value>
   </data>
   <data name="testDbConStr" xml:space="preserve">
     <value>Data Source=wolsqlentwicklung;Initial Catalog=Wordle;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False</value>
-    <comment>vr'S</comment>
-  </data>
-  <data name="testDbConStr9g" xml:space="preserve">
-    <value>Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\r019c9g\source\repos\SchoolProjects\WordleBlazor\Wordle.DAL\Database\TestDB.mdf;Integrated Security=True</value>
   </data>
 </root>

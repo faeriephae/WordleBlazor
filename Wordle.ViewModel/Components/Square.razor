@@ -1,7 +1,7 @@
 ﻿<!-- Components/Square -->
 @using Wordle.Model
 
-<div class="square comp" onkeydown=@HandleKey><input/></div>
+<div class="square comp" onkeydown=@HandleKey @onfocusin="Focus" ><input @ref="input" maxlength="1"/></div>
 
 <style scoped>
     .square {
@@ -39,4 +39,20 @@
 
     [Parameter]
     public EventCallback HandleKey { get; set; }
+
+    private ElementReference input;
+
+    private async void Focus()
+    {
+        await input.FocusAsync();
+
+    }
+
+    //protected async override Task OnAfterRenderAsync(bool firstRender)
+    //{
+    //    if (firstRender)
+    //    {
+    //        await input.FocusAsync();
+    //    }
+    //}
 }
