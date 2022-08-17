@@ -7,102 +7,45 @@
 <div class="board">
     @for (int i = 0; i < gameManager.NumberRows; i++)
     {
-        <Row RowIndex=@i />
+        <Row RowIndex=@i @ref="RowRef" />
     }
 </div>
 
 <style scoped>
-   /* .board {
+    .board {
         margin: 0 auto;
         display: grid;
         grid-auto-rows: auto;
         background-color: rgba(19, 19, 19, 0.79);
         padding: 0;
         /* in px so it doesn't scale */
-        /*width: 400px;
+        width: 400px;
         height: 500px;
     }
 
-    .input {
-        height: 80px;
-        width: 100%;
+    td {
+        border: 1px solid red;
         padding: 0;
-        background-color: white;
-        border: none;
-        color: white;
-        margin: 0 auto;
-        text-align: center;
-        text-transform: uppercase;
+        margin: 0;
     }
-
-    .input[type=text]:focus{
-        outline: none;
-    }
-
-        td {
-            border: 1px solid red;
-            padding: 0;
-            margin: 0;
-        }*/
 </style>
 
 @code {
-    //[Inject]
-    //public IJSRuntime JSRuntime { get; set; }
 
-    //[Parameter]
-    //public string Color { get; set; } = "inherit";
-
-    //private IJSObjectReference module;
-
-
-
-    //private ElementReference[] Squares = new ElementReference[30];
-
-    //private int currSq = 0;
-
-    //private int endOfLine = 4;
-
-    //private char[] values = new char[30];
-
-    //string word = "HELLO";
+    List<Row> RowRefs = new List<Row>();
+    Row RowRef
+    {
+        set { RowRefs.Add(value); }
+    }
 
     protected async override Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            await gameManager.Squares[0,0].FocusAsync();
+            await RowRefs[0].squareRefs[0].FocusAsync();
+            //await RowRefs[0].;
         }
     }
 
-    //private void Press(KeyboardEventArgs e)
-    //{
-    //    values[currSq] = Convert.ToChar(e.Key);
-    //    Console.WriteLine(e.Key);
-    //    currSq++;
-    //}
 
-    //private void Enter(KeyboardEventArgs e)
-    //{
-    //    if (currSq == endOfLine && e.Key == "Enter")
-    //    {
-
-    //        for (int i = endOfLine - 4; i <= currSq; i++){
-    //            Color = "green";
-    //            Console.WriteLine(values[i]);
-    //        }
-
-
-    //        Squares[++currSq].FocusAsync();
-    //        endOfLine += 5;
-    //    }
-    //    else if(e.Key.Length == 1 && currSq < 29 && char.IsLetter(Convert.ToChar(e.Key)))
-    //    {
-    //        values[currSq] = Convert.ToChar(e.Key);
-    //        if (currSq != endOfLine)
-    //        {
-    //            Squares[++currSq].FocusAsync();
-    //        }
-    //    }        
-    //}
 }

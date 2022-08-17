@@ -4,12 +4,16 @@ namespace Wordle.ViewModel.Classes
 {
     public class GameManager
     {
+        //All letters
         public string[,] Field { get; set; }
 
+        //Word
         public string Term { get; set; } = "HELLO";
 
+        //How many rows does the game have?
         public int NumberRows { get; set; }
 
+        //How many columns does the game have?
         public int NumberColumns { get; set; }
 
         public ElementReference[,] Squares { get; set; }
@@ -27,25 +31,20 @@ namespace Wordle.ViewModel.Classes
             await Squares[row, col].FocusAsync();
         }
 
-        public string[] CheckRow(int row)
+        public string CheckRow(int row, int column)
         {
-            string[] check = new string[NumberColumns];
-            for (int i = 0; i < NumberColumns; i++)
+            if (Field[row, column].ToString() == Term[column].ToString())
             {
-                if (Field[row, i].ToString() == Term[i].ToString())
-                {
-                    check[i] = "g";
-                }
-                else if (Term.Contains(Field[row, i]))
-                {
-                    check[i] = "o";
-                }
-                else
-                {
-                    check[i] = "b";
-                }
+                return "g";
             }
-            return check;
+            else if (Term.Contains(Field[row, column]))
+            {
+                return "o";
+            }
+            else
+            {
+                return "b";
+            }
         }
     }
 }

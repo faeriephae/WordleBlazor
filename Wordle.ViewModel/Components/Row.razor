@@ -8,7 +8,9 @@
 <div class="row comp">    
     @for(int i = 0; i < gameManager.NumberColumns; i++)
     {
-        <Square RowIndex=@RowIndex ColumnIndex=@i/>
+        //Set background color of square. b = black; g = green; o = orange
+        CssBackground.Add("b");
+        <Square RowIndex=@RowIndex ColumnIndex=@i OnRowFinished="RowFinished" CssClasses="@CssBackground[i]" RowRef=@squareRefs/>
     }
 @*
     @for(int i = 0; i < 5; i++)
@@ -19,26 +21,37 @@
 </div>
 
 <style scoped>
-/*    .row {
+    .row {
         margin: 0 auto;
         background-color: inherit;
         width: 100%;
         height: 100%;
-    }*/
+    }
 </style>
 
 @code {
     [Parameter]
     public int RowIndex { get; set; }
-    //public char value { get; set; }
 
-    //private int currSq = 0;
+    private List<string> CssBackground = new List<string>();
 
-    //private char[] values = new char[30];
+    public ElementReference[] squareRefs = new ElementReference[5];
 
-    //private void KeyDown(KeyboardEventArgs e)
-    //{
-    //    values[currSq] = Convert.ToChar(e.Key);
-    //    currSq++;
-    //}
+    protected async override Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            //await squareRefs[0].FocusAsync();
+        }
+    }
+
+    private void RowFinished()
+    {
+        Console.WriteLine("row finished");
+
+        for (int i = 0; i < gameManager.NumberColumns; i++)
+        {
+            CssBackground[i] = gameManager.CheckRow(RowIndex, i);
+        }
+    }
 }
