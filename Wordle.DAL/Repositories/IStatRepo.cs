@@ -50,6 +50,6 @@ namespace Wordle.DAL.Repositories
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        Task UpdatePlayerStatsAsync( Player player );
+        Task UpdatePlayerStatsAsync( int id );
     }
 }

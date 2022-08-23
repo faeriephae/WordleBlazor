@@ -54,9 +54,9 @@ namespace Wordle.DAL.Repositories
             await _dataContext.AddAsync(stat);
         }
 
-        public async Task UpdatePlayerStatsAsync( Player player  )
+        public async Task UpdatePlayerStatsAsync( int id  )
         {
-            _dataContext.Stats.UpdateRange(await GetStatAsync(player));
+            _dataContext.Stats.UpdateRange(await CalculateGameStatsAsync(id));
         }
     }
 }

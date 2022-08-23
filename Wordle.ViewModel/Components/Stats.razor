@@ -1,0 +1,55 @@
+﻿@using Wordle.ViewModel.Classes
+@inject StatsCalculation statsCalc
+
+<h3>Stats</h3>
+
+ <table>
+        <tr>
+            <td>
+                <label>Played</label>
+            </td>
+            <td>
+                <label>Win %</label>
+            </td>
+            <td>
+                <label>Current Streak</label>
+            </td>
+            <td>
+                <label>Max Streak</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>@statsCalc.GamesPlayed</p>
+            </td>
+            <td>
+                <p>@statsCalc.WinPercentage</p>
+            </td>
+            <td>
+                <p>@statsCalc.Streak</p>
+            </td>
+            <td>
+                <p>@statsCalc.MaxStreak</p>
+            </td>
+        </tr>
+    </table>
+
+<style scoped>
+    table{
+        margin-left: auto;
+        margin-right: auto;
+        border: 2px solid rgba(80, 80, 80, 1);
+        width: 25%;
+    }
+
+    td {
+        text-align: center;
+        padding: 0;
+        margin: 0;
+        color: white;
+    }
+</style>
+
+@code {
+   
+}

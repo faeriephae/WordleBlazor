@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wordle.ViewModel", "Wordle.ViewModel\Wordle.ViewModel.csproj", "{C66C26F4-20F9-4205-8819-A98D7F237926}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wordle.ViewModel", "Wordle.ViewModel\Wordle.ViewModel.csproj", "{C66C26F4-20F9-4205-8819-A98D7F237926}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wordle.DAL", "Wordle.DAL\Wordle.DAL.csproj", "{991831CE-F5DB-44C9-A2FA-B92D88B8D1CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wordle.DAL", "Wordle.DAL\Wordle.DAL.csproj", "{991831CE-F5DB-44C9-A2FA-B92D88B8D1CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wordle.Model", "Wordle.Model\Wordle.Model.csproj", "{925F2DC1-FFAA-4527-BD34-50428E7CD68F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wordle.Model", "Wordle.Model\Wordle.Model.csproj", "{925F2DC1-FFAA-4527-BD34-50428E7CD68F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
