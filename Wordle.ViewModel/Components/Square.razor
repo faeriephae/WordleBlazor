@@ -1,7 +1,9 @@
 ﻿<!-- Components/Square -->
 @using Wordle.Model
+@using Wordle.ViewModel.Classes
+@inject GameManager gameManager
 
-<div class="square comp" onkeydown=@HandleKey @onfocusin="Focus" ><input @ref="input" maxlength="1"/></div>
+<input class="square @CssClasses" @onkeyup="@OnKeyUpHandler" @bind="InputText" @bind:event="oninput" onkeydown="return /[a-z]/i.test(event.key)" maxlength="1" @ref="RowRef[ColumnIndex]"/>
 
 <style scoped>
     .square {
@@ -17,42 +19,89 @@
         color: white;
         border: 2px solid rgba(80, 80, 80, 1);
         cursor: pointer;
+        width: 75px;
+        text-transform: uppercase;
+        outline: none;
+        caret-color: transparent;
     }
 
-        .square:hover {
-            background-color: rgba(80, 80, 80, 1);
-        }
+    .g {
+        background-color: green;
+    }
 
-        input {
-            height: 100%;
-            width: 100%;
-            padding: 0;
-            background-color: inherit;
-            border: none;
-            color: white;
-        }
+    .o {
+        background-color: orange;
+    }
+
+    .b {
+        background-color: inherit;
+    }
 </style>
 
 @code {
     [Parameter]
-    public char value { get; set; }
+    public int RowIndex { get; set; }
+    [Parameter]
+    public int ColumnIndex { get; set; }
+
+    private string? InputText { get; set; } = "";
 
     [Parameter]
-    public EventCallback HandleKey { get; set; }
+    public string? CssClasses { get; set; }
 
-    private ElementReference input;
+    [Parameter]
+    public EventCallback OnRowFinished{ get; set; }
 
-    private async void Focus()
+    [Parameter]
+    public ElementReference[] RowRef{ get; set; }
+
+    private async Task RowFinished()
     {
-        await input.FocusAsync();
-
+        await OnRowFinished.InvokeAsync();
     }
 
-    //protected async override Task OnAfterRenderAsync(bool firstRender)
-    //{
-    //    if (firstRender)
-    //    {
-    //        await input.FocusAsync();
-    //    }
-    //}
+    private async void OnKeyUpHandler(KeyboardEventArgs e)
+    {
+        Console.WriteLine("1: " + InputText);
+        if (ColumnIndex == gameManager.NumberColumns - 1 && InputText != string.Empty && e.Key == "Enter")
+        {
+            await RowFinished();
+
+            ////go to first column of next row
+            //if (gameManager.CheckRow(RowIndex)[gameManager.NumberColumns - 1] == "g")
+            //{
+            //    CssClasses = "g";
+            //}
+
+            //if (RowIndex < gameManager.NumberRows - 1)
+            //{                
+            //gameManager.FocusNextSquare(RowIndex + 1, 0);
+            //}
+            //foreach (string item in gameManager.Field)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+
+        }
+        else if (InputText.Length == 1)
+        {
+            //only cast ToUpper if InputText is not empty to prevent
+            gameManager.Field[RowIndex, ColumnIndex] = InputText != "" ? InputText.ToUpper() : "";
+
+            if (ColumnIndex < 4)
+            {
+                //go to next column
+                //gameManager.FocusNextSquare(RowIndex, ColumnIndex + 1);
+                await RowRef[ColumnIndex + 1].FocusAsync();
+            }
+        }
+
+        if (e.Key == "Backspace" && ColumnIndex > 0)
+        {
+            gameManager.FocusNextSquare(RowIndex, ColumnIndex - 1);
+        }
+        
+        Console.WriteLine("3: " + e.Key);
+    }
 }
