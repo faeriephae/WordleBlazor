@@ -3,13 +3,19 @@
 @using Wordle.ViewModel.Classes
 
 @inject GameManager gameManager
+@inject StatsCalculation statsCalc
 
 <div class="board">
     @for (int i = 0; i < gameManager.NumberRows; i++)
-    {
-        <Row RowIndex=@i @ref="RowRef" />
+    {        
+        <Row RowIndex=@i @ref="RowRef" GoToNextRow="NextRow" StatsShown="ShowStats" />        
     }
 </div>
+
+@if (showStats)
+{
+    <Stats />
+}
 
 <style scoped>
     .board {
@@ -22,15 +28,12 @@
         width: 400px;
         height: 500px;
     }
-
-    td {
-        border: 1px solid red;
-        padding: 0;
-        margin: 0;
-    }
 </style>
 
 @code {
+    private bool showStats = false;
+
+    private int currRow = 0;
 
     List<Row> RowRefs = new List<Row>();
     Row RowRef
@@ -38,14 +41,37 @@
         set { RowRefs.Add(value); }
     }
 
+    public void ShowStats()
+    {
+        showStats = true;
+    }
+
     protected async override Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            await RowRefs[0].squareRefs[0].FocusAsync();
-            //await RowRefs[0].;
+            await RowRefs[currRow].squareRefs[0].FocusAsync();
         }
     }
 
+    private async void NextRow()
+    {
+        if (currRow < gameManager.NumberRows - 1)
+        {
+            await RowRefs[++currRow].squareRefs[0].FocusAsync();
+        }
+        else
+        {
+            //TODO
+            //Calculate and show stats if all rows have been filled
+            //throw new NotImplementedException();
+            statsCalc.CalculateStats(false);
+            showStats = true;
+        }
+    }
 
+    public void RefreshState()
+    {
+        this.StateHasChanged();
+    }
 }

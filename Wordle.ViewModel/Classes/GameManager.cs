@@ -26,10 +26,7 @@ namespace Wordle.ViewModel.Classes
             Squares = new ElementReference[numberRows, numberColumns];
         }
 
-        public async void FocusNextSquare(int row, int col)
-        {
-            await Squares[row, col].FocusAsync();
-        }
+
 
         public string CheckRow(int row, int column)
         {

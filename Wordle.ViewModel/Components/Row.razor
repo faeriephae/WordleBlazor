@@ -4,6 +4,7 @@
 @using Wordle.ViewModel.Classes
 
 @inject GameManager gameManager
+@inject StatsCalculation statsCalc
 
 <div class="row comp">    
     @for(int i = 0; i < gameManager.NumberColumns; i++)
@@ -33,25 +34,53 @@
     [Parameter]
     public int RowIndex { get; set; }
 
+    [Parameter]
+    public EventCallback GoToNextRow{ get; set; }
+
+    [Parameter]
+    public EventCallback StatsShown{ get; set; }
+
     private List<string> CssBackground = new List<string>();
 
     public ElementReference[] squareRefs = new ElementReference[5];
 
-    protected async override Task OnAfterRenderAsync(bool firstRender)
+    private async Task NextRow()
     {
-        if (firstRender)
-        {
-            //await squareRefs[0].FocusAsync();
-        }
+        await GoToNextRow.InvokeAsync();
     }
 
-    private void RowFinished()
+    private async Task ShowStats()
+    {
+        await StatsShown.InvokeAsync();
+    }
+
+    private async void RowFinished()
     {
         Console.WriteLine("row finished");
 
+        bool correctGuess = true;
         for (int i = 0; i < gameManager.NumberColumns; i++)
         {
             CssBackground[i] = gameManager.CheckRow(RowIndex, i);
+            if (CssBackground[i] != "g")
+            {
+                correctGuess = false;
+            }
+        }
+
+        if (correctGuess)
+        {
+            //TODO
+            //Calculate stats
+            statsCalc.CalculateStats(correctGuess);
+
+            //show stats
+            await ShowStats();
+        }
+        else
+        {
+
+            await NextRow();
         }
     }
 }

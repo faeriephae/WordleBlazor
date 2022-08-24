@@ -31,6 +31,11 @@ namespace Wordle.DAL.Repositories
             set { _statRepo = value; }
         }
 
+        public UnitOfWork(DataContext dbContext)
+        {
+            _dataContext = dbContext;
+        }
+
         //Save
         public async Task CommitAsync()
         {
