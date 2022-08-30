@@ -49,14 +49,17 @@
     [Parameter]
     public string? CssClasses { get; set; }
 
+    //Used to call method from Row in which this Square is embedded
     [Parameter]
     public EventCallback OnRowFinished{ get; set; }
 
     [Parameter]
     public ElementReference[] RowRef{ get; set; }
 
+    //Call method from OnRowFinished parameter
     private async Task RowFinished()
     {
+
         await OnRowFinished.InvokeAsync();
     }
 
@@ -65,25 +68,10 @@
         Console.WriteLine("1: " + InputText);
         if (ColumnIndex == gameManager.NumberColumns - 1 && InputText != string.Empty && e.Key == "Enter")
         {
+            //Go to next Row if user pressed enter in last Sqaure of the Row
             await RowFinished();
-
-            ////go to first column of next row
-            //if (gameManager.CheckRow(RowIndex)[gameManager.NumberColumns - 1] == "g")
-            //{
-            //    CssClasses = "g";
-            //}
-
-            //if (RowIndex < gameManager.NumberRows - 1)
-            //{                
-            //gameManager.FocusNextSquare(RowIndex + 1, 0);
-            //}
-            //foreach (string item in gameManager.Field)
-            //{
-            //    Console.WriteLine(item);
-            //}
-
-
         }
+        //Is the input a single letter?
         else if (InputText.Length == 1)
         {
             //only cast ToUpper if InputText is not empty to prevent
@@ -92,16 +80,13 @@
             if (ColumnIndex < 4)
             {
                 //go to next column
-                //gameManager.FocusNextSquare(RowIndex, ColumnIndex + 1);
                 await RowRef[ColumnIndex + 1].FocusAsync();
             }
         }
-
+        //ToDo: logic for deleting characters
         if (e.Key == "Backspace" && ColumnIndex > 0)
         {
-            //gameManager.FocusNextSquare(RowIndex, ColumnIndex - 1);
+            throw new NotImplementedException();
         }
-        
-        Console.WriteLine("3: " + e.Key);
     }
 }
