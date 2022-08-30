@@ -9,35 +9,40 @@ namespace Wordle.ViewModel.Classes
 
         //Word
         public string Term { get; set; } = "HELLO";
-
-        //How many rows does the game have?
         public int NumberRows { get; set; }
-
-        //How many columns does the game have?
         public int NumberColumns { get; set; }
-
         public ElementReference[,] Squares { get; set; }
 
-        public GameManager(int numberRows, int numberColumns)
+
+        public GameManager( int numberRows, int numberColumns )
         {
-            Field = new string[numberRows, numberColumns];
+            Field = new string[ numberRows, numberColumns ];
             NumberRows = numberRows;
             NumberColumns = numberColumns;
-            Squares = new ElementReference[numberRows, numberColumns];
+            Squares = new ElementReference[ numberRows, numberColumns ];
         }
 
-
-
-        public string CheckRow(int row, int column)
+        /// <summary>
+        /// Checks letter validity.
+        /// </summary>
+        /// <param name="row"></param>
+        /// <param name="column"></param>
+        /// <returns></returns>
+        public string CheckLetter( int row, int column )
         {
-            if (Field[row, column].ToString() == Term[column].ToString())
+            //has letter, right place
+            if( Field[ row, column ].ToString() == Term[ column ].ToString() )
             {
                 return "g";
             }
-            else if (Term.Contains(Field[row, column]))
+
+            //has letter, wrong place
+            else if( Term.Contains( Field[ row, column ] ) )
             {
                 return "o";
             }
+
+            //neither
             else
             {
                 return "b";

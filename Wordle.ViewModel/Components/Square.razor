@@ -3,8 +3,10 @@
 @using Wordle.ViewModel.Classes
 @inject GameManager gameManager
 
+<!-- HTML -->
 <input class="square @CssClasses" @onkeyup="@OnKeyUpHandler" @bind="InputText" @bind:event="oninput" onkeydown="return /[a-z]/i.test(event.key)" maxlength="1" @ref="RowRef[ColumnIndex]"/>
 
+<!-- CSS -->
 <style scoped>
     .square {
         background-color: rgba(19, 19, 19, 0.79);
@@ -26,11 +28,11 @@
     }
 
     .g {
-        background-color: green;
+        background-color: #538d4e;
     }
 
     .o {
-        background-color: orange;
+        background-color: #f7da21;
     }
 
     .b {
@@ -38,23 +40,26 @@
     }
 </style>
 
+<!-- CODE -->
 @code {
     [Parameter]
     public int RowIndex { get; set; }
+
     [Parameter]
     public int ColumnIndex { get; set; }
-
-    private string? InputText { get; set; } = "";
 
     [Parameter]
     public string? CssClasses { get; set; }
 
     [Parameter]
-    public EventCallback OnRowFinished{ get; set; }
+    public EventCallback OnRowFinished { get; set; }
 
     [Parameter]
-    public ElementReference[] RowRef{ get; set; }
+    public ElementReference[] RowRef { get; set; }
 
+    private string? InputText { get; set; } = "";
+
+    //what does this do and what is it for, comment please
     private async Task RowFinished()
     {
         await OnRowFinished.InvokeAsync();
@@ -63,6 +68,8 @@
     private async void OnKeyUpHandler(KeyboardEventArgs e)
     {
         Console.WriteLine("1: " + InputText);
+
+        //comment please
         if (ColumnIndex == gameManager.NumberColumns - 1 && InputText != string.Empty && e.Key == "Enter")
         {
             await RowFinished();
@@ -81,7 +88,6 @@
             //{
             //    Console.WriteLine(item);
             //}
-
 
         }
         else if (InputText.Length == 1)

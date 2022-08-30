@@ -61,7 +61,7 @@
         bool correctGuess = true;
         for (int i = 0; i < gameManager.NumberColumns; i++)
         {
-            CssBackground[i] = gameManager.CheckRow(RowIndex, i);
+            CssBackground[i] = gameManager.CheckLetter(RowIndex, i);
             if (CssBackground[i] != "g")
             {
                 correctGuess = false;
