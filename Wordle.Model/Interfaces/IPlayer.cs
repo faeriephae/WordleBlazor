@@ -12,8 +12,6 @@ namespace Wordle.Model.Interfaces
         public string IP { get; set; }
         public string Language { get; set; }
         public string Email { get; set; }
-
-        //Idk if the player needs this but it can't hurt
         public ICollection<Game> Games { get; set; }
     }
 }

@@ -7,13 +7,13 @@ namespace Wordle.DAL
     {
         protected override void OnConfiguring( DbContextOptionsBuilder optionsBuilder )
         {
-            optionsBuilder.UseSqlServer(Resource.testDbConStr);
+            optionsBuilder.UseSqlServer( Resource.testDbConStr );
         }
 
         protected override void OnModelCreating( ModelBuilder modelBuilder )
         {
             //Primary key from Stat.cs --> PlayerId + GameId
-            modelBuilder.Entity<Stat>().HasKey(id => new { id.Id, id.PlayerId });
+            modelBuilder.Entity<Stat>().HasKey( id => new { id.Id, id.PlayerId } );
         }
 
         //Tables to build

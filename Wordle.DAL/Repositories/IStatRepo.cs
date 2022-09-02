@@ -29,7 +29,7 @@ namespace Wordle.DAL.Repositories
         /// </summary>
         /// <param name="id"></param>
         /// <returns>List</returns>
-        Task<List<Stat>> GetAllStatsAsync( );
+        Task<List<Stat>> GetAllStatsAsync();
 
         /// <summary>
         /// Gets Stat by Stat.Id.

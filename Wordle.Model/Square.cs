@@ -8,7 +8,7 @@ namespace Wordle.Model
 {
     public class Square
     {
-        public Square(int id)
+        public Square( int id )
         {
             Id = id;
         }

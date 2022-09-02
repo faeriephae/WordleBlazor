@@ -11,13 +11,13 @@ namespace Wordle.Model
     public class Player : IPlayer
     {
         [Key]
-        public int Id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string IP { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int Id { get; set; }
+        public string IP { get; set; }
 
         [StringLength(2)]
-        public string Language { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string Email { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string Language { get; set; }
+        public string Email { get; set; }
 
-        public virtual ICollection<Game> Games { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public virtual ICollection<Game> Games { get; set; }
     }
 }

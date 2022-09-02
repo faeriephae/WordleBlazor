@@ -44,6 +44,7 @@
 
     public ElementReference[] squareRefs = new ElementReference[5];
 
+
     private async Task NextRow()
     {
         await GoToNextRow.InvokeAsync();
@@ -54,6 +55,7 @@
         await StatsShown.InvokeAsync();
     }
 
+    //@9g add comment
     private async void RowFinished()
     {
         Console.WriteLine("row finished");
@@ -70,7 +72,6 @@
 
         if (correctGuess)
         {
-            //TODO
             //Calculate stats
             statsCalc.CalculateStats(correctGuess);
 

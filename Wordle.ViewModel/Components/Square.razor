@@ -4,7 +4,7 @@
 @inject GameManager gameManager
 
 <!-- HTML -->
-<input class="square @CssClasses" @onkeyup="@OnKeyUpHandler" @bind="InputText" @bind:event="oninput" onkeydown="return /[a-z]/i.test(event.key)" maxlength="1" @ref="RowRef[ColumnIndex]"/>
+<input class="square @CssClasses" @onkeyup="@OnKeyUpHandler" @bind="InputText" @bind:event="oninput" onkeydown="return /[a-z]/i.test(event.key)" maxlength="1" @ref="RowRef[ColumnIndex]" />
 
 <!-- CSS -->
 <style scoped>
@@ -59,18 +59,18 @@
 
     private string? InputText { get; set; } = "";
 
-    //what does this do and what is it for, comment please
     private async Task RowFinished()
     {
         await OnRowFinished.InvokeAsync();
     }
 
-    private async void OnKeyUpHandler(KeyboardEventArgs e)
+    //@9g cleanup + comment
+    private async void OnKeyUpHandler( KeyboardEventArgs e )
     {
-        Console.WriteLine("1: " + InputText);
+        Console.WriteLine( "1: " + InputText );
 
         //comment please
-        if (ColumnIndex == gameManager.NumberColumns - 1 && InputText != string.Empty && e.Key == "Enter")
+        if( ColumnIndex == gameManager.NumberColumns - 1 && InputText != string.Empty && e.Key == "Enter" )
         {
             await RowFinished();
 
@@ -81,7 +81,7 @@
             //}
 
             //if (RowIndex < gameManager.NumberRows - 1)
-            //{                
+            //{
             //gameManager.FocusNextSquare(RowIndex + 1, 0);
             //}
             //foreach (string item in gameManager.Field)
@@ -90,24 +90,24 @@
             //}
 
         }
-        else if (InputText.Length == 1)
+        else if( InputText.Length == 1 )
         {
             //only cast ToUpper if InputText is not empty to prevent
-            gameManager.Field[RowIndex, ColumnIndex] = InputText != "" ? InputText.ToUpper() : "";
+            gameManager.Field[ RowIndex, ColumnIndex ] = InputText != "" ? InputText.ToUpper() : "";
 
-            if (ColumnIndex < 4)
+            if( ColumnIndex < 4 )
             {
                 //go to next column
                 //gameManager.FocusNextSquare(RowIndex, ColumnIndex + 1);
-                await RowRef[ColumnIndex + 1].FocusAsync();
+                await RowRef[ ColumnIndex + 1 ].FocusAsync();
             }
         }
 
-        if (e.Key == "Backspace" && ColumnIndex > 0)
+        if( e.Key == "Backspace" && ColumnIndex > 0 )
         {
             //gameManager.FocusNextSquare(RowIndex, ColumnIndex - 1);
         }
-        
-        Console.WriteLine("3: " + e.Key);
+
+        Console.WriteLine( "3: " + e.Key );
     }
 }

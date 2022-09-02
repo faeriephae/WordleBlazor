@@ -17,7 +17,7 @@ namespace Wordle.DAL.Repositories
             get
             {
                 //If null --> assign
-                return _gamePlayerRepo ??= new GamePlayerRepo(_dataContext);
+                return _gamePlayerRepo ??= new GamePlayerRepo( _dataContext );
             }
             set { _gamePlayerRepo = value; }
         }
@@ -26,12 +26,12 @@ namespace Wordle.DAL.Repositories
         {
             get
             {
-                return _statRepo ??= new StatRepo(_dataContext);
+                return _statRepo ??= new StatRepo( _dataContext );
             }
             set { _statRepo = value; }
         }
 
-        public UnitOfWork(DataContext dbContext)
+        public UnitOfWork( DataContext dbContext )
         {
             _dataContext = dbContext;
         }
@@ -44,6 +44,9 @@ namespace Wordle.DAL.Repositories
 
         public async void Dispose()
         {
+            //derived types won't need to implement Dispose with this
+            GC.SuppressFinalize( this );
+
             await _dataContext.DisposeAsync();
         }
     }

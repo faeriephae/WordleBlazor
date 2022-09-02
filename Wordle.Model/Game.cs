@@ -6,14 +6,14 @@ namespace Wordle.Model
     public class Game : IGame
     {
         [Key]
-        public int Id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int Id { get; set; }
         [Required]
-        public int PlayerId { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int PlayerId { get; set; }
         [Required]
-        public int DateWordId { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public int NumTries { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int NumTries { get; set; }
 
-        public virtual Player Player { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public virtual DateWord DateWord { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public virtual Player Player { get; set; }
+        public virtual DateWord DateWord { get; set; }
+        public int DateWordId { get; set; }
     }
 }
