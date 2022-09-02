@@ -14,7 +14,7 @@ namespace Wordle.Model
         public int Id { get; set; }
         public string IP { get; set; }
 
-        [StringLength(2)]
+        [StringLength( 2 )]
         public string Language { get; set; }
         public string Email { get; set; }
 
