@@ -11,23 +11,23 @@ namespace Wordle.Model
     public class Stat : IStat
     {
         [Key]
-        public int Id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int Id { get; set; }
         [Key, Required]
-        public int PlayerId { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public int GamesPlayed { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int PlayerId { get; set; }
+        public int GamesPlayed { get; set; }
 
         [Required]
-        public int GamesWon { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int GamesWon { get; set; }
 
         [Required]
-        public int MaxStreak { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int MaxStreak { get; set; }
 
         [Required]
-        public int Streak { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int Streak { get; set; }
 
         [Required]
-        public int WinPercentage { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int WinPercentage { get; set; }
 
-        public virtual Player Player { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public virtual Player Player { get; set; }
     }
 }

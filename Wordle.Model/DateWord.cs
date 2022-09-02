@@ -12,13 +12,13 @@ namespace Wordle.Model
     public class DateWord : IDateWord
     {
         [Key]
-        public int Id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int Id { get; set; }
 
         [Required]
-        public int WordId { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int WordId { get; set; }
 
-        [Required, Column(TypeName="DATETIME2")]
-        public DateTime Date { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public Word Word { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        [Required, Column( TypeName = "DATETIME2" )]
+        public DateTime Date { get; set; }
+        public Word Word { get; set; }
     }
 }

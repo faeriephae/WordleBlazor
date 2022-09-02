@@ -13,6 +13,5 @@ namespace Wordle.Model
             Id = id;
         }
         public int Id { get; set; }
-        public List<Row>? Rows { get; set; }
     }
 }

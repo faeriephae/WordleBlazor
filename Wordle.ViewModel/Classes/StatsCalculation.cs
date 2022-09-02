@@ -5,7 +5,7 @@ using Wordle.Model;
 namespace Wordle.ViewModel.Classes
 {
     public class StatsCalculation
-    {        
+    {
         private DataContext? _dataContext = new DataContext();
 
         private UnitOfWork? uow;
@@ -16,15 +16,17 @@ namespace Wordle.ViewModel.Classes
         private int maxStreak;
         private float winPercentage;
 
-        public int GamesPlayed {
-            get { return gamesPlayed; } 
+        public int GamesPlayed
+        {
+            get { return gamesPlayed; }
         }
 
         public int GamesWon
         {
             get { return gamesWon; }
         }
-        public int Streak {
+        public int Streak
+        {
             get { return streak; }
         }
 
@@ -40,28 +42,36 @@ namespace Wordle.ViewModel.Classes
 
         public StatsCalculation()
         {
-            uow = new UnitOfWork(_dataContext);
+            uow = new UnitOfWork( _dataContext );
         }
 
-        public void CalculateStats(bool hasWon)
+        /// <summary>
+        /// Calculate statistic.
+        /// </summary>
+        /// <param name="hasWon"></param>
+        public void CalculateStats( bool hasWon )
         {
             gamesPlayed++;
 
-            if (hasWon)
+            if( hasWon )
             {
                 gamesWon++;
                 streak++;
 
-                if (streak > maxStreak)
+                //set max streak
+                if( streak > maxStreak )
                 {
                     maxStreak = streak;
                 }
             }
+
+            //reset streak on loss
             else
             {
                 streak = 0;
             }
 
+            //average
             winPercentage = gamesWon / gamesPlayed * 100;
         }
     }
