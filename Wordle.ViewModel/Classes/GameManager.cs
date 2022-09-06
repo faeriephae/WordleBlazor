@@ -6,8 +6,6 @@ namespace Wordle.ViewModel.Classes
     {
         //All letters
         public string[,] Field { get; set; }
-
-        //Word
         public string Term { get; set; } = "HELLO";
         public int NumberRows { get; set; }
         public int NumberColumns { get; set; }
