@@ -3,113 +3,90 @@
 @using Wordle.ViewModel.Classes
 @inject GameManager gameManager
 
-<!-- HTML -->
-<input class="square @CssClasses" @onkeyup="@OnKeyUpHandler" @bind="InputText" @bind:event="oninput" onkeydown="return /[a-z]/i.test(event.key)" maxlength="1" @ref="RowRef[ColumnIndex]" />
+<input class="square @CssClasses" @onkeyup="@OnKeyUpHandler" @bind="InputText" @bind:event="oninput" onkeydown="return /[a-z]/i.test(event.key)" maxlength="1" @ref="RowRef[ColumnIndex]"/>
 
-<!-- CSS -->
 <style scoped>
     .square {
         background-color: rgba(19, 19, 19, 0.79);
         border: none;
-        padding: 0;
         box-sizing: border-box;
         width: 75px;
         height: 75px;
-        margin: 0px 2px 2px 4px;
+        margin: 2px 2px 2px 3px;
         font-size: 30px;
         text-align: center;
         vertical-align: middle;
         color: white;
-        border: 3px solid #3a3a3c;
+        border: 2px solid rgba(80, 80, 80, 1);
         cursor: pointer;
+        width: 75px;
         text-transform: uppercase;
         outline: none;
         caret-color: transparent;
     }
 
     .g {
-        background-color: #538d4e;
-        border-color: #538d4e;
+        background-color: green;
     }
 
     .o {
-        background-color: #f7da21;
-        border-color: #f7da21;
+        background-color: orange;
     }
 
     .b {
-        background-color: #3a3a3c;
+        background-color: inherit;
     }
 </style>
 
-<!-- CODE -->
 @code {
     [Parameter]
     public int RowIndex { get; set; }
-
     [Parameter]
     public int ColumnIndex { get; set; }
+
+    private string? InputText { get; set; } = "";
 
     [Parameter]
     public string? CssClasses { get; set; }
 
+    //Used to call method from Row in which this Square is embedded
     [Parameter]
-    public EventCallback OnRowFinished { get; set; }
+    public EventCallback OnRowFinished{ get; set; }
 
     [Parameter]
-    public ElementReference[] RowRef { get; set; }
+    public ElementReference[] RowRef{ get; set; }
 
-    private string? InputText { get; set; } = "";
-
+    //Call method from OnRowFinished parameter
     private async Task RowFinished()
     {
+
         await OnRowFinished.InvokeAsync();
     }
 
-    //@9g cleanup + comment
-    private async void OnKeyUpHandler( KeyboardEventArgs e )
+    private async void OnKeyUpHandler(KeyboardEventArgs e)
     {
-        Console.WriteLine( "1: " + InputText );
-
-        //@9g comment please
-        if( ColumnIndex == gameManager.NumberColumns - 1 && InputText != string.Empty && e.Key == "Enter" )
+        Console.WriteLine("1: " + InputText);
+        if (ColumnIndex == gameManager.NumberColumns - 1 && InputText != string.Empty && e.Key == "Enter")
         {
+            //Go to next Row if user pressed enter in last Sqaure of the Row
             await RowFinished();
-
-            ////go to first column of next row
-            //if (gameManager.CheckRow(RowIndex)[gameManager.NumberColumns - 1] == "g")
-            //{
-            //    CssClasses = "g";
-            //}
-
-            //if (RowIndex < gameManager.NumberRows - 1)
-            //{
-            //gameManager.FocusNextSquare(RowIndex + 1, 0);
-            //}
-            //foreach (string item in gameManager.Field)
-            //{
-            //    Console.WriteLine(item);
-            //}
-
         }
-        else if( InputText.Length == 1 )
+        //Is the input a single letter?
+        else if (InputText.Length == 1)
         {
             //only cast ToUpper if InputText is not empty to prevent
-            gameManager.Field[ RowIndex, ColumnIndex ] = InputText != "" ? InputText.ToUpper() : "";
+            gameManager.Field[RowIndex, ColumnIndex] = InputText != "" ? InputText.ToUpper() : "";
 
-            if( ColumnIndex < 4 )
+            if (ColumnIndex < 4)
             {
                 //go to next column
-                //gameManager.FocusNextSquare(RowIndex, ColumnIndex + 1);
-                await RowRef[ ColumnIndex + 1 ].FocusAsync();
+                await RowRef[ColumnIndex + 1].FocusAsync();
             }
         }
-
-        if( e.Key == "Backspace" && ColumnIndex > 0 )
+        //ToDo: logic for deleting characters
+        if (e.Key == "Backspace" && ColumnIndex > 0)
         {
-            //gameManager.FocusNextSquare(RowIndex, ColumnIndex - 1);
+            throw new NotImplementedException();
         }
-
-        Console.WriteLine( "3: " + e.Key );
     }
 }
