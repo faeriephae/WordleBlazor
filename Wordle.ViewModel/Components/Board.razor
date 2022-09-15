@@ -15,6 +15,10 @@
     }
 </div>
 
+<div class="KeyBoard">
+    <Keyboard/>
+</div>
+
 <!-- STATS -->
 @if( showStats )
 {
@@ -32,6 +36,15 @@
         <!-- looks ugly if smaller than 406px -->
         width: 406px;
         height: 500px;
+    }
+
+    .KeyBoard {
+        margin: 75px auto;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        <!-- looks ugly if smaller than 406px -->
+        width: 600px;
     }
 </style>
 
@@ -66,6 +79,7 @@
         if( currRow < gameManager.NumberRows - 1 )
         {
             await RowRefs[ ++currRow ].squareRefs[ 0 ].FocusAsync();
+            gameManager.CurrRow = currRow;
         }
         else
         {

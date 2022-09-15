@@ -10,6 +10,8 @@ namespace Wordle.ViewModel.Classes
         public int NumberRows { get; set; }
         public int NumberColumns { get; set; }
         public ElementReference[,] Squares { get; set; }
+        public int CurrRow { get; set; }
+        public int CurrCol { get; set; }
 
 
         public GameManager( int numberRows, int numberColumns )
@@ -18,6 +20,8 @@ namespace Wordle.ViewModel.Classes
             NumberRows = numberRows;
             NumberColumns = numberColumns;
             Squares = new ElementReference[ numberRows, numberColumns ];
+            CurrCol = 0;
+            CurrRow = 0;
         }
 
         /// <summary>

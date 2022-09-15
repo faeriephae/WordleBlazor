@@ -7,6 +7,16 @@
 <button class="key @CssClasses" @onclick="@OnClickHandler" maxlength="1"> @Letter </button>
 
 <!-- CSS -->
+<style scoped>
+    .key{
+        margin: 5px auto;
+        height: 70px;
+        width: 50px;
+        border-color: rgba(80, 80, 80, 1);
+        background-color: rgba(19, 19, 19, 0.79);
+        color: white;
+    }
+</style>
 
 <!-- CODE -->
 @code {
@@ -25,7 +35,8 @@
     [Parameter]
     public ElementReference[] KeyRef { get; set; }
 
-    private string? Letter { get; set; }
+    [Parameter]
+    public string Letter { get; set; }
 
     private async Task ClickFinished()
     {
@@ -37,9 +48,11 @@
     {
         //first part of if --> ColumnIndex == gameManager.NumberColumns - 1 &&
         //e.Button 0 --> left mouse button
-        if( Letter != string.Empty && e.Button == 0 )
-        {
-            await ClickFinished();
-        }
+        //if( Letter != string.Empty && e.Button == 0 )
+        //{
+        //    await ClickFinished();
+        //}
+        gameManager.Field[gameManager.CurrCol, gameManager.CurrRow] = Letter;
+        Console.WriteLine(gameManager.Field);
     }
 }

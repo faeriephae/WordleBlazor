@@ -1,0 +1,25 @@
+﻿@using System.Web
+@for (var j = 0; j < 3; j++)
+{
+    int keys = j == 0 ? 10 : 9;
+    <div class="keys">
+        @for (int i = 0; i < keys; i++)
+        {
+            <Key Letter=@keyboardLayoutEnglish[key]></Key>
+            key++;
+        }
+    </div>
+}
+
+<style scoped>
+    .keys{
+        margin: 0 auto;
+        padding: 0;
+        vertical-align: middle;
+    }
+</style>
+
+@code {
+    int key = 0;
+    List<string> keyboardLayoutEnglish = new List<string>() { "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "A", "S", "D", "F", "G", "H", "J", "K", "L", "Enter", "Z", "X", "C", "V", "B", "N", "M", "\u232B" };
+}

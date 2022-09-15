@@ -80,6 +80,7 @@
             if (ColumnIndex < 4)
             {
                 //go to next column
+                gameManager.CurrCol = ColumnIndex + 1;
                 await RowRef[ColumnIndex + 1].FocusAsync();
             }
         }
