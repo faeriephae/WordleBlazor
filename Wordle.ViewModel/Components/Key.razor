@@ -1,6 +1,6 @@
 ﻿<!-- Component/Key -->
 @using Wordle.Model
-@using Wordle.ViewModel.Classes
+@using Wordle.Model.GameLogic
 @inject GameManager gameManager
 
 <!-- HTML -->
@@ -53,6 +53,11 @@
         //    await ClickFinished();
         //}
         gameManager.Field[gameManager.CurrCol, gameManager.CurrRow] = Letter;
-        Console.WriteLine(gameManager.Field);
+        gameManager.CurrCol++;
+        //await RowRef[ColumnIndex + 1].FocusAsync();
+        foreach (string item in gameManager.Field)
+        {
+            Console.WriteLine(item);
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿<!-- Components/Board -->
 @using Wordle.ViewModel.Components
-@using Wordle.ViewModel.Classes
+@using Wordle.Model.GameLogic
 
 @inject GameManager gameManager
 @inject StatsCalculation statsCalc
@@ -16,7 +16,7 @@
 </div>
 
 <div class="KeyBoard">
-    <Keyboard/>
+    <Keyboard />
 </div>
 
 <!-- STATS -->

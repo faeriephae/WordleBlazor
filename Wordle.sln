@@ -5,8 +5,6 @@ VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wordle.ViewModel", "Wordle.ViewModel\Wordle.ViewModel.csproj", "{C66C26F4-20F9-4205-8819-A98D7F237926}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wordle.DAL", "Wordle.DAL\Wordle.DAL.csproj", "{991831CE-F5DB-44C9-A2FA-B92D88B8D1CD}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wordle.Model", "Wordle.Model\Wordle.Model.csproj", "{925F2DC1-FFAA-4527-BD34-50428E7CD68F}"
 EndProject
 Global
@@ -19,10 +17,6 @@ Global
 		{C66C26F4-20F9-4205-8819-A98D7F237926}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C66C26F4-20F9-4205-8819-A98D7F237926}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C66C26F4-20F9-4205-8819-A98D7F237926}.Release|Any CPU.Build.0 = Release|Any CPU
-		{991831CE-F5DB-44C9-A2FA-B92D88B8D1CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{991831CE-F5DB-44C9-A2FA-B92D88B8D1CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{991831CE-F5DB-44C9-A2FA-B92D88B8D1CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{991831CE-F5DB-44C9-A2FA-B92D88B8D1CD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{925F2DC1-FFAA-4527-BD34-50428E7CD68F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{925F2DC1-FFAA-4527-BD34-50428E7CD68F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{925F2DC1-FFAA-4527-BD34-50428E7CD68F}.Release|Any CPU.ActiveCfg = Release|Any CPU

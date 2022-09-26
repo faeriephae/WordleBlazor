@@ -1,9 +1,9 @@
 ﻿<!-- Components/Square -->
 @using Wordle.Model
-@using Wordle.ViewModel.Classes
+@using Wordle.Model.GameLogic
 @inject GameManager gameManager
 
-<input class="square @CssClasses" @onkeyup="@OnKeyUpHandler" @bind="InputText" @bind:event="oninput" onkeydown="return /[a-z]/i.test(event.key)" maxlength="1" @ref="RowRef[ColumnIndex]"/>
+<input class="square @CssClasses" @onkeyup="@OnKeyUpHandler" @bind="@InputText" @bind:event="oninput" onkeydown="return /[a-z]/i.test(event.key)" maxlength="1" @ref="RowRef[ColumnIndex]" />
 
 <style scoped>
     .square {
@@ -44,7 +44,7 @@
     [Parameter]
     public int ColumnIndex { get; set; }
 
-    private string? InputText { get; set; } = "";
+    public string? InputText = "";
 
     [Parameter]
     public string? CssClasses { get; set; }
