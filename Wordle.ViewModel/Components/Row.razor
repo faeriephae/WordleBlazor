@@ -13,12 +13,7 @@
         CssBackground.Add("b");
         <Square @ref="@SquareRef" RowIndex=@RowIndex ColumnIndex=@i OnRowFinished="RowFinished" CssClasses="@CssBackground[i]" RowRef=@squareRefs />
     }
-@*
-    @for(int i = 0; i < 5; i++)
-    {
-        int sqNumber = i;
-        <Square @key=sqNumber @onkeydown=KeyDown/>
-    }*@
+
 </div>
 
 <style scoped>
@@ -47,7 +42,8 @@
     public List<Square> SquareRefs = new List<Square>();
 
     public Square SquareRef{
-        set{
+        set
+        {
             SquareRefs.Add(value);
         }
     }

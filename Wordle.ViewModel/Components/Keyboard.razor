@@ -27,4 +27,19 @@
     public List<Row> AllRows { get; set; }
     int key = 0;
     List<string> keyboardLayoutEnglish = new List<string>() { "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "A", "S", "D", "F", "G", "H", "J", "K", "L", "Enter", "Z", "X", "C", "V", "B", "N", "M", "\u232B" };
+
+    [Parameter]
+    public int RowIndex { get; set; }
+
+    public ElementReference[] keyRef = new ElementReference[ 5 ];
+
+    public List<Key> KeyRefs = new List<Key>();
+
+    public Key KeyRef
+    {
+        set
+        {
+            KeyRefs.Add( value );
+        }
+    }
 }

@@ -38,23 +38,12 @@
     [Parameter]
     public string Letter { get; set; }
 
-    private async Task ClickFinished()
-    {
-        //Invocation
-        await OnClickFinished.InvokeAsync();
-    }
-
     private async void OnClickHandler( MouseEventArgs e)
     {
-        //first part of if --> ColumnIndex == gameManager.NumberColumns - 1 &&
-        //e.Button 0 --> left mouse button
-        //if( Letter != string.Empty && e.Button == 0 )
-        //{
-        //    await ClickFinished();
-        //}
+        //which key
         gameManager.Field[gameManager.CurrCol, gameManager.CurrRow] = Letter;
         gameManager.CurrCol++;
-        //await RowRef[ColumnIndex + 1].FocusAsync();
+
         foreach (string item in gameManager.Field)
         {
             Console.WriteLine(item);

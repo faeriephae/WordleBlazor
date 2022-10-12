@@ -41,6 +41,7 @@
 @code {
     [Parameter]
     public int RowIndex { get; set; }
+
     [Parameter]
     public int ColumnIndex { get; set; }
 
@@ -59,35 +60,39 @@
     //Call method from OnRowFinished parameter
     private async Task RowFinished()
     {
-
         await OnRowFinished.InvokeAsync();
     }
 
     private async void OnKeyUpHandler(KeyboardEventArgs e)
     {
         Console.WriteLine("1: " + InputText);
+
+        //Go to next Row if user pressed enter in last Sqaure of the Row
         if (ColumnIndex == gameManager.NumberColumns - 1 && InputText != string.Empty && e.Key == "Enter")
         {
-            //Go to next Row if user pressed enter in last Sqaure of the Row
             await RowFinished();
         }
-        //Is the input a single letter?
-        else if (InputText.Length == 1)
+        else if ( InputText.Length == 1 ) //Is the input a single letter?
         {
-            //only cast ToUpper if InputText is not empty to prevent
-            gameManager.Field[RowIndex, ColumnIndex] = InputText != "" ? InputText.ToUpper() : "";
+            //only cast ToUpper if InputText is not empty
+            gameManager.Field[RowIndex, ColumnIndex] = InputText != String.Empty ? InputText.ToUpper() : String.Empty;
 
             if (ColumnIndex < 4)
             {
                 //go to next column
                 gameManager.CurrCol = ColumnIndex + 1;
-                await RowRef[ColumnIndex + 1].FocusAsync();
+                await RowRef[gameManager.CurrCol].FocusAsync();
             }
         }
-        //ToDo: logic for deleting characters
-        if (e.Key == "Backspace" && ColumnIndex > 0)
+
+        //TODO:
+        //find out why it has to be pressed twice/so slow
+        if ( e.Key == "Backspace" && ColumnIndex != 0 )
         {
-            throw new NotImplementedException();
+            gameManager.Field[ RowIndex, gameManager.CurrCol ] = String.Empty;
+            gameManager.CurrCol = ColumnIndex - 1;
+            await RowRef[ gameManager.CurrCol].FocusAsync(true);
+
         }
     }
 }
